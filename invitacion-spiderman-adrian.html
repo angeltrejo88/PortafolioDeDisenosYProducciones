@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>¡Cumpleaños de Adrián! 🕷️</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --rojo: #CC0000;
+  --rojo-vivo: #FF0000;
+  --azul: #0A1A3B;
+  --azul-medio: #1B3A6B;
+  --blanco: #FFFFFF;
+  --gris: #f0f0f0;
+  --amarillo: #FFD700;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--azul);
+  color: var(--blanco);
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* ===================== TELARAÑA SVG FIJA ===================== */
+.web-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+}
+
+/* ===================== CANVAS TELARAÑA INTERACTIVA ===================== */
+#web-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 30%, #1B3A6B 0%, #0A1A3B 60%, #050d1f 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px 60px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Telaraña de esquinas decorativas */
+.corner-web {
+  position: absolute;
+  opacity: 0.25;
+}
+.corner-web.tl { top: 0; left: 0; }
+.corner-web.tr { top: 0; right: 0; transform: scaleX(-1); }
+.corner-web.bl { bottom: 0; left: 0; transform: scaleY(-1); }
+.corner-web.br { bottom: 0; right: 0; transform: scale(-1); }
+
+/* Manchas de color dinámicas */
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.glow-red { width: 300px; height: 300px; background: rgba(204,0,0,0.3); top: -80px; left: -60px; animation: glowPulse 3s ease-in-out infinite; }
+.glow-blue { width: 250px; height: 250px; background: rgba(27,58,107,0.4); bottom: -60px; right: -40px; animation: glowPulse 3s ease-in-out 1.5s infinite; }
+
+@keyframes glowPulse {
+  0%,100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+/* ---- HÉROE SPIDERMAN (espacio para foto) ---- */
+.spiderman-silhouette {
+  position: relative;
+  width: 200px;
+  height: 220px;
+  margin: 0 auto 8px;
+  z-index: 2;
+}
+
+.spider-photo-slot {
+  width: 180px;
+  height: 200px;
+  border-radius: 50% 50% 45% 45%;
+  background: linear-gradient(160deg, #1a0000, #3a0000, #CC0000);
+  border: 4px solid rgba(255,255,255,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(204,0,0,0.5), inset 0 0 30px rgba(0,0,0,0.4);
+  transition: transform 0.3s;
+}
+
+.spider-photo-slot:active { transform: scale(0.97); }
+
+.spider-icon-big {
+  font-size: 80px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+  animation: spiderFloat 3s ease-in-out infinite;
+}
+
+@keyframes spiderFloat {
+  0%,100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+.photo-hint {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 8px;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* ---- TEXTO HERO ---- */
+.hero-eyebrow {
+  font-family: 'Bangers', cursive;
+  font-size: 16px;
+  letter-spacing: 5px;
+  color: var(--amarillo);
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+  margin-bottom: 8px;
+  animation: fadeDown 0.8s ease 0.3s both;
+}
+
+.hero-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(52px, 14vw, 90px);
+  line-height: 0.9;
+  color: var(--blanco);
+  text-shadow: 4px 4px 0 var(--rojo), 8px 8px 0 rgba(0,0,0,0.4);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  animation: fadeDown 0.8s ease 0.5s both;
+}
+
+.hero-subtitle {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(26px, 7vw, 48px);
+  color: var(--rojo-vivo);
+  text-shadow: 2px 2px 0 var(--azul), 4px 4px 0 rgba(0,0,0,0.3);
+  letter-spacing: 3px;
+  animation: fadeDown 0.8s ease 0.7s both;
+  margin-bottom: 20px;
+}
+
+.hero-nombre {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(32px, 9vw, 60px);
+  color: var(--amarillo);
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.6);
+  animation: fadeDown 0.8s ease 0.9s both;
+  margin-bottom: 28px;
+  line-height: 1;
+}
+
+/* Botón disparar telaraña */
+.btn-web {
+  background: linear-gradient(135deg, var(--rojo), #990000);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-family: 'Bangers', cursive;
+  font-size: 22px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(204,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  overflow: hidden;
+  animation: fadeDown 0.8s ease 1.1s both;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.btn-web::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+}
+
+.btn-web:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(204,0,0,0.3);
+}
+
+.web-hint {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 12px;
+  letter-spacing: 1px;
+  animation: fadeDown 0.8s ease 1.3s both;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== SECCIÓN: RASCA EL NÚMERO ===================== */
+.scratch-section {
+  background: linear-gradient(135deg, #CC0000, #880000, #CC0000);
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.scratch-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='2' fill='rgba(0,0,0,0.1)'/%3E%3C/svg%3E");
+}
+
+.section-comic-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(32px, 9vw, 56px);
+  color: var(--blanco);
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.scratch-hint {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 1px;
+}
+
+.scratch-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  cursor: pointer;
+  z-index: 2;
+  touch-action: none;
+}
+
+.scratch-reveal {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0A1A3B, #1B3A6B);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.scratch-number {
+  font-family: 'Bangers', cursive;
+  font-size: 100px;
+  color: var(--amarillo);
+  text-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+  line-height: 1;
+}
+
+.scratch-label {
+  font-family: 'Bangers', cursive;
+  font-size: 22px;
+  color: var(--blanco);
+  letter-spacing: 3px;
+}
+
+canvas.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.scratch-done-msg {
+  display: none;
+  margin-top: 20px;
+  font-family: 'Bangers', cursive;
+  font-size: 22px;
+  color: var(--amarillo);
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================== SECCIÓN FOTOS ===================== */
+.fotos-section {
+  background: var(--azul);
+  padding: 60px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.fotos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 480px;
+  margin: 24px auto 0;
+}
+
+.foto-slot {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #0f2040, #1B3A6B);
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.4);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 12px;
+  transition: border-color 0.3s;
+}
+
+.foto-slot-icon { font-size: 32px; opacity: 0.5; }
+
+.foto-slot.grande {
+  grid-column: span 2;
+  aspect-ratio: 16/9;
+}
+
+/* ===================== SECCIÓN FECHA (FLIP) ===================== */
+.fecha-section {
+  background: var(--blanco);
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.fecha-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 10px,
+    rgba(204,0,0,0.04) 10px,
+    rgba(204,0,0,0.04) 20px
+  );
+}
+
+.fecha-section .section-comic-title { color: var(--azul); text-shadow: 2px 2px 0 rgba(0,0,0,0.15); }
+
+.fecha-hint {
+  font-size: 14px;
+  color: rgba(10,26,59,0.6);
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.fecha-cards {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.fecha-card {
+  width: 88px;
+  height: 100px;
+  perspective: 600px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.fecha-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+}
+
+.fecha-card.flipped .fecha-card-inner {
+  transform: rotateY(180deg);
+}
+
+.fecha-front, .fecha-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.fecha-front {
+  background: linear-gradient(135deg, var(--rojo), #880000);
+  box-shadow: 0 6px 20px rgba(204,0,0,0.35);
+}
+
+.fecha-front-icon { font-size: 36px; }
+.fecha-front-text {
+  font-family: 'Bangers', cursive;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.fecha-back {
+  background: linear-gradient(135deg, var(--azul), var(--azul-medio));
+  transform: rotateY(180deg);
+  box-shadow: 0 6px 20px rgba(10,26,59,0.5);
+  border: 2px solid rgba(255,215,0,0.4);
+}
+
+.fecha-back-num {
+  font-family: 'Bangers', cursive;
+  font-size: 32px;
+  color: var(--amarillo);
+  line-height: 1;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+}
+
+.fecha-back-label {
+  font-family: 'Bangers', cursive;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.fecha-done-text {
+  margin-top: 28px;
+  font-family: 'Bangers', cursive;
+  font-size: 20px;
+  color: var(--azul);
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s, transform 0.5s;
+  position: relative;
+  z-index: 1;
+}
+
+.fecha-done-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================== SECCIÓN CONTADOR ===================== */
+.contador-section {
+  background: linear-gradient(135deg, #050d1f, #0A1A3B);
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contador-grid {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.contador-bloque {
+  background: linear-gradient(135deg, #0f2040, #1B3A6B);
+  border: 2px solid rgba(204,0,0,0.4);
+  border-radius: 16px;
+  padding: 20px 16px;
+  min-width: 76px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contador-bloque::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+.c-num {
+  font-family: 'Bangers', cursive;
+  font-size: 48px;
+  color: var(--rojo-vivo);
+  line-height: 1;
+  display: block;
+  text-shadow: 0 0 20px rgba(255,0,0,0.4);
+}
+
+.c-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ===================== SECCIÓN LANZAR TELARAÑA ===================== */
+.web-shoot-section {
+  background: linear-gradient(135deg, #0A1A3B, #1B3A6B);
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.web-target-area {
+  width: 100%;
+  max-width: 400px;
+  height: 280px;
+  margin: 28px auto 0;
+  background: linear-gradient(135deg, #050d1f, #0a1428);
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.web-target-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.3);
+  font-size: 14px;
+  letter-spacing: 1px;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+.web-target-hint.hidden { opacity: 0; }
+
+.web-target-hint-icon { font-size: 48px; }
+
+/* ===================== SECCIÓN PROGRAMA ===================== */
+.programa-section {
+  background: var(--blanco);
+  padding: 60px 20px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.programa-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 38px,
+    rgba(10,26,59,0.05) 38px,
+    rgba(10,26,59,0.05) 39px
+  );
+}
+
+.programa-section .section-comic-title { color: var(--azul); text-shadow: 2px 2px 0 rgba(0,0,0,0.15); }
+
+.programa-items {
+  max-width: 440px;
+  margin: 28px auto 0;
+  position: relative;
+  z-index: 1;
+}
+
+.programa-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-left: 5px solid var(--rojo);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  touch-action: manipulation;
+}
+
+.programa-item:active { transform: scale(0.98); }
+
+.programa-item.exploded {
+  animation: comicPop 0.4s ease;
+  border-left-color: var(--amarillo);
+}
+
+@keyframes comicPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.programa-icon {
+  font-size: 32px;
+  min-width: 44px;
+  text-align: center;
+  line-height: 1;
+}
+
+.programa-info { flex: 1; }
+
+.programa-hora {
+  font-family: 'Bangers', cursive;
+  font-size: 18px;
+  color: var(--rojo);
+  letter-spacing: 1px;
+}
+
+.programa-evento {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--azul);
+  margin-top: 2px;
+}
+
+.programa-lugar {
+  font-size: 12px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.programa-boom {
+  display: none;
+  position: absolute;
+  top: -16px;
+  right: -8px;
+  font-family: 'Bangers', cursive;
+  font-size: 26px;
+  color: var(--amarillo);
+  text-shadow: 2px 2px 0 var(--rojo);
+  animation: boomAnim 0.5s ease;
+  pointer-events: none;
+}
+
+@keyframes boomAnim {
+  0% { transform: scale(0) rotate(-15deg); }
+  60% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ===================== SECCIÓN UBICACIÓN ===================== */
+.ubicacion-section {
+  background: linear-gradient(135deg, #050d1f, #0A1A3B);
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ubicacion-card {
+  max-width: 440px;
+  margin: 28px auto 0;
+  background: linear-gradient(135deg, #0f2040, #1B3A6B);
+  border: 2px solid rgba(204,0,0,0.4);
+  border-radius: 20px;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ubicacion-card::before {
+  content: '🕷️';
+  position: absolute;
+  font-size: 80px;
+  opacity: 0.05;
+  top: 10px;
+  right: 10px;
+}
+
+.ubicacion-nombre {
+  font-family: 'Bangers', cursive;
+  font-size: 28px;
+  color: var(--amarillo);
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.ubicacion-dir {
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.ubicacion-hora-pill {
+  background: linear-gradient(135deg, var(--rojo), #880000);
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-family: 'Bangers', cursive;
+  font-size: 20px;
+  letter-spacing: 2px;
+  display: inline-block;
+  box-shadow: 0 4px 14px rgba(204,0,0,0.4);
+}
+
+/* Mapa pin animado */
+.mapa-mock {
+  margin-top: 24px;
+  background: #0a1428;
+  border-radius: 16px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.mapa-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.mapa-pin-anim {
+  font-size: 42px;
+  animation: pinBounce 1.5s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes pinBounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===================== SECCIÓN RSVP ===================== */
+.rsvp-section {
+  background: linear-gradient(135deg, var(--rojo), #880000, var(--rojo));
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.rsvp-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='rgba(0,0,0,0.1)'/%3E%3C/svg%3E");
+}
+
+.rsvp-form {
+  max-width: 420px;
+  margin: 28px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.rsvp-input {
+  background: rgba(0,0,0,0.25);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.rsvp-input::placeholder { color: rgba(255,255,255,0.4); }
+.rsvp-input:focus { border-color: var(--amarillo); }
+
+.rsvp-select option { background: #880000; }
+
+.rsvp-btn {
+  background: var(--azul);
+  color: var(--amarillo);
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'Bangers', cursive;
+  font-size: 24px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+  touch-action: manipulation;
+  margin-top: 4px;
+}
+
+.rsvp-btn:active { transform: scale(0.97); }
+
+.rsvp-success {
+  display: none;
+  background: rgba(0,0,0,0.25);
+  border: 2px solid rgba(255,215,0,0.4);
+  border-radius: 16px;
+  padding: 24px;
+  font-family: 'Bangers', cursive;
+  font-size: 26px;
+  color: var(--amarillo);
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================== CIERRE ===================== */
+.cierre-section {
+  background: var(--azul);
+  padding: 60px 20px 40px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cierre-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(36px, 10vw, 64px);
+  color: var(--blanco);
+  text-shadow: 4px 4px 0 var(--rojo);
+  letter-spacing: 3px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.cierre-subtitle {
+  font-family: 'Bangers', cursive;
+  font-size: 22px;
+  color: var(--amarillo);
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+}
+
+.cierre-firma {
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 2px;
+}
+
+/* ===================== EFECTOS CÓMIC ===================== */
+.comic-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  font-family: 'Bangers', cursive;
+  font-size: 32px;
+  color: var(--amarillo);
+  text-shadow: 2px 2px 0 var(--rojo);
+  animation: burstAnim 0.8s ease forwards;
+}
+
+@keyframes burstAnim {
+  0% { transform: scale(0) rotate(-20deg); opacity: 1; }
+  60% { transform: scale(1.3) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg) translateY(-40px); opacity: 0; }
+}
+
+/* ===================== WEB SHOOT CANVAS ===================== */
+.web-lines-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ===================== REVEAL ===================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 380px) {
+  .fecha-card { width: 76px; height: 88px; }
+  .c-num { font-size: 38px; }
+  .contador-bloque { min-width: 64px; padding: 14px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Canvas global para telarañas al tocar pantalla -->
+<canvas id="web-canvas"></canvas>
+
+<!-- Telaraña de fondo fija -->
+<svg class="web-bg" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="white" fill="none" stroke-width="0.5">
+    <line x1="200" y1="0" x2="0" y2="400"/><line x1="200" y1="0" x2="80" y2="450"/>
+    <line x1="200" y1="0" x2="160" y2="480"/><line x1="200" y1="0" x2="200" y2="500"/>
+    <line x1="200" y1="0" x2="240" y2="480"/><line x1="200" y1="0" x2="320" y2="450"/>
+    <line x1="200" y1="0" x2="400" y2="400"/>
+    <ellipse cx="200" cy="0" rx="40" ry="50"/><ellipse cx="200" cy="0" rx="90" ry="120"/>
+    <ellipse cx="200" cy="0" rx="150" ry="220"/><ellipse cx="200" cy="0" rx="210" ry="330"/>
+    <ellipse cx="200" cy="0" rx="270" ry="450"/>
+  </g>
+</svg>
+
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="hero">
+
+  <svg class="corner-web tl" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="white" stroke-width="0.8">
+      <line x1="0" y1="0" x2="100" y2="100"/><line x1="0" y1="0" x2="60" y2="100"/>
+      <line x1="0" y1="0" x2="100" y2="60"/><line x1="0" y1="0" x2="20" y2="100"/>
+      <line x1="0" y1="0" x2="100" y2="20"/>
+      <path d="M 0 20 Q 10 10 20 0"/><path d="M 0 50 Q 25 25 50 0"/>
+      <path d="M 0 80 Q 40 40 80 0"/>
+    </g>
+  </svg>
+  <svg class="corner-web tr" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="white" stroke-width="0.8">
+      <line x1="0" y1="0" x2="100" y2="100"/><line x1="0" y1="0" x2="60" y2="100"/>
+      <line x1="0" y1="0" x2="100" y2="60"/><line x1="0" y1="0" x2="20" y2="100"/>
+      <line x1="0" y1="0" x2="100" y2="20"/>
+      <path d="M 0 20 Q 10 10 20 0"/><path d="M 0 50 Q 25 25 50 0"/>
+      <path d="M 0 80 Q 40 40 80 0"/>
+    </g>
+  </svg>
+
+  <div class="hero-glow glow-red"></div>
+  <div class="hero-glow glow-blue"></div>
+
+  <p class="hero-eyebrow">¡La fiesta del año!</p>
+
+  <h1 class="hero-title">¡FELIZ<br>CUMPLEAÑOS!</h1>
+
+  <p class="hero-subtitle">10 AÑOS 🕷️</p>
+
+  <div class="spiderman-silhouette">
+    <div class="spider-photo-slot">
+      <!-- ESPACIO PARA FOTO DEL CUMPLEAÑERO -->
+      <img src="https://images.halloweencostumes.com.mx/products/43503/2-1-138431/marvel-toddler-spider-man-costume-alt-3.jpg" alt="Adrián" style="width:80%; height:150%; object-fit:cover;">
+    </div>
+  </div>
+  
+
+  <p class="hero-nombre">¡ADRIÁN!</p>
+
+  <button class="btn-web" id="btn-shoot-hero" onclick="shootWebHero()">
+    🕸️ ¡LANZA UNA TELARAÑA!
+  </button>
+  <p class="web-hint">Toca la pantalla en cualquier lugar</p>
+
+</section>
+
+
+<!-- ===================== RASCA EL NÚMERO ===================== -->
+<section class="scratch-section">
+  <h2 class="section-comic-title reveal">¡RASCA Y DESCUBRE!</h2>
+  <p class="scratch-hint reveal">¿Cuántos años cumple Adrián?<br>¡Rasca con el dedo para saberlo!</p>
+
+  <div class="scratch-container reveal" id="scratch-container">
+    <div class="scratch-reveal">
+      <span class="scratch-number">10</span>
+      <span class="scratch-label">AÑOS</span>
+    </div>
+    <canvas class="scratch-canvas" id="scratch-canvas"></canvas>
+  </div>
+
+  <p class="scratch-done-msg" id="scratch-msg">🎉 ¡¡ 10 AÑAZOS !! 🎉</p>
+</section>
+
+
+<!-- ===================== FOTOS DEL CUMPLEAÑERO ===================== -->
+<section class="fotos-section">
+  <h2 class="section-comic-title reveal" style="color:var(--blanco);">¡EL FESTEJADO!</h2>
+  
+
+ <div style="display:flex; gap:10px; max-width:100%; margin:24px auto 0; padding:0 16px;">
+  <div style="flex:1; border-radius:12px; overflow:hidden; aspect-ratio:3/4;">
+    <img src="https://i.pinimg.com/1200x/53/01/9c/53019c6f917acf18f8b01f5893f37267.jpg" 
+         alt="Adrián" style="width:100%; height:100%; object-fit:cover;">
+  </div>
+  <div style="flex:1; border-radius:12px; overflow:hidden; aspect-ratio:3/4;">
+    <img src="https://i.pinimg.com/736x/21/69/76/216976be3fd95825f2b2d64c1e7bb26a.jpg" 
+         alt="Adrián" style="width:100%; height:100%; object-fit:cover;">
+  </div>
+  <div style="flex:1; border-radius:12px; overflow:hidden; aspect-ratio:3/4;">
+    <img src="https://i.pinimg.com/1200x/06/1b/bd/061bbdbe0901d4883d95b9a0872b11ef.jpg" 
+         alt="Adrián" style="width:100%; height:100%; object-fit:cover;">
+  </div>
+</div>
+</section>
+
+
+<!-- ===================== FECHA (FLIP) ===================== -->
+<section class="fecha-section">
+  <h2 class="section-comic-title reveal">¡ANOTA LA FECHA!</h2>
+  <p class="fecha-hint reveal">¡Toca cada tarjeta para revelar la fecha!</p>
+
+  <div class="fecha-cards reveal">
+    <div class="fecha-card" onclick="flipCard(this)" data-index="0">
+      <div class="fecha-card-inner">
+        <div class="fecha-front"><div class="fecha-front-icon">🕸️</div><div class="fecha-front-text">DÍA</div></div>
+        <div class="fecha-back"><div class="fecha-back-num">26</div><div class="fecha-back-label">DÍA</div></div>
+      </div>
+    </div>
+    <div class="fecha-card" onclick="flipCard(this)" data-index="1">
+      <div class="fecha-card-inner">
+        <div class="fecha-front"><div class="fecha-front-icon">🕷️</div><div class="fecha-front-text">MES</div></div>
+        <div class="fecha-back"><div class="fecha-back-num" style="font-size:22px;">DIC</div><div class="fecha-back-label">MES</div></div>
+      </div>
+    </div>
+    <div class="fecha-card" onclick="flipCard(this)" data-index="2">
+      <div class="fecha-card-inner">
+        <div class="fecha-front"><div class="fecha-front-icon">🕸️</div><div class="fecha-front-text">AÑO</div></div>
+        <div class="fecha-back"><div class="fecha-back-num" style="font-size:20px;">2026</div><div class="fecha-back-label">AÑO</div></div>
+      </div>
+    </div>
+    <div class="fecha-card" onclick="flipCard(this)" data-index="3">
+      <div class="fecha-card-inner">
+        <div class="fecha-front"><div class="fecha-front-icon">⏰</div><div class="fecha-front-text">HORA</div></div>
+        <div class="fecha-back"><div class="fecha-back-num" style="font-size:20px;">4 PM</div><div class="fecha-back-label">HORA</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fecha-done-text" id="fecha-done">
+    🕷️ ¡26 de Diciembre 2026 a las 4:00 PM! ¡No faltes! 🕷️
+  </div>
+</section>
+
+
+<!-- ===================== CONTADOR ===================== -->
+<section class="contador-section">
+  <h2 class="section-comic-title reveal">¡CUENTA REGRESIVA!</h2>
+  <div class="contador-grid reveal">
+    <div class="contador-bloque"><span class="c-num" id="c-dias">--</span><span class="c-label">Días</span></div>
+    <div class="contador-bloque"><span class="c-num" id="c-horas">--</span><span class="c-label">Horas</span></div>
+    <div class="contador-bloque"><span class="c-num" id="c-min">--</span><span class="c-label">Minutos</span></div>
+    <div class="contador-bloque"><span class="c-num" id="c-seg">--</span><span class="c-label">Segs</span></div>
+  </div>
+</section>
+
+
+<!-- ===================== DISPARA TELARAÑAS ===================== -->
+<section class="web-shoot-section">
+  <h2 class="section-comic-title reveal">¡LANZA TU TELARAÑA!</h2>
+  <p class="scratch-hint reveal" style="color:rgba(255,255,255,0.5);">Toca el área roja para disparar ¡como Spiderman!</p>
+
+  <div class="web-target-area reveal" id="web-target" ontouchstart="handleWebShoot(event)" onclick="handleWebShootClick(event)">
+    <svg class="web-lines-svg" id="web-svg"></svg>
+    <div class="web-target-hint" id="web-hint-inner">
+      <div class="web-target-hint-icon">🕷️</div>
+      <span>¡TOCA AQUÍ!</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== PROGRAMA ===================== -->
+<section class="programa-section">
+  <h2 class="section-comic-title reveal">¡EL PLAN!</h2>
+  <p class="fecha-hint reveal">¡Toca cada evento para activarlo! 💥</p>
+
+  <div class="programa-items reveal">
+
+    <div class="programa-item" onclick="explotar(this)">
+      <div class="programa-boom">💥 ¡POW!</div>
+      <div class="programa-icon">🎈</div>
+      <div class="programa-info">
+        <div class="programa-hora">4:00 PM</div>
+        <div class="programa-evento">¡Llegada y bienvenida!</div>
+        <div class="programa-lugar">Salón Las Palmas</div>
+      </div>
+    </div>
+
+    <div class="programa-item" onclick="explotar(this)">
+      <div class="programa-boom">🕷️ ¡WEB!</div>
+      <div class="programa-icon">🕸️</div>
+      <div class="programa-info">
+        <div class="programa-hora">4:30 PM</div>
+        <div class="programa-evento">Juegos y actividades</div>
+        <div class="programa-lugar">¡Tema Spiderman!</div>
+      </div>
+    </div>
+
+    <div class="programa-item" onclick="explotar(this)">
+      <div class="programa-boom">🎂 ¡YUM!</div>
+      <div class="programa-icon">🎂</div>
+      <div class="programa-info">
+        <div class="programa-hora">6:00 PM</div>
+        <div class="programa-evento">¡Las mañanitas y pastel!</div>
+        <div class="programa-lugar">¡A soplar las velitas!</div>
+      </div>
+    </div>
+
+    <div class="programa-item" onclick="explotar(this)">
+      <div class="programa-boom">🎁 ¡BAM!</div>
+      <div class="programa-icon">🎁</div>
+      <div class="programa-info">
+        <div class="programa-hora">6:30 PM</div>
+        <div class="programa-evento">Piñata y regalos</div>
+        <div class="programa-lugar">¡A romperla!</div>
+      </div>
+    </div>
+
+    <div class="programa-item" onclick="explotar(this)">
+      <div class="programa-boom">🎉 ¡BOOM!</div>
+      <div class="programa-icon">🎉</div>
+      <div class="programa-info">
+        <div class="programa-hora">7:00 PM</div>
+        <div class="programa-evento">¡A bailar y convivir!</div>
+        <div class="programa-lugar">¡La fiesta continúa!</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===================== UBICACIÓN ===================== -->
+<section class="ubicacion-section">
+  <h2 class="section-comic-title reveal">¿DÓNDE ES?</h2>
+
+  <div class="ubicacion-card reveal">
+    <div class="ubicacion-nombre">🏟️ Salón Las Palmas</div>
+    <div class="ubicacion-dir">
+      Av. Guanaceví 123 Pte.<br>
+      Col. Fuentes del Pedregal<br>
+      Durango, Durango, México
+    </div>
+    <div class="ubicacion-hora-pill">⏰ 4:00 PM · 26 DIC 2026</div>
+    <div class="mapa-mock">
+      <div class="mapa-grid"></div>
+      <div class="mapa-pin-anim">📍</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== RSVP ===================== -->
+<section class="rsvp-section">
+  <h2 class="section-comic-title reveal">¡CONFIRMA TU MISIÓN!</h2>
+  <p class="scratch-hint reveal" style="color:rgba(255,255,255,0.7);">Los héroes confirman su asistencia 🦸</p>
+
+  <div class="rsvp-form reveal">
+    <input type="text" class="rsvp-input" id="r-nombre" placeholder="Tu nombre de héroe...">
+    <select class="rsvp-input rsvp-select" id="r-cant">
+      <option value="">¿Cuántos asistirán?</option>
+      <option>Solo yo (1)</option>
+      <option>2 héroes</option>
+      <option>3 héroes</option>
+      <option>4 héroes</option>
+      <option>5 o más héroes</option>
+    </select>
+    <select class="rsvp-input rsvp-select" id="r-conf">
+      <option value="">¿Aceptas la misión?</option>
+      <option value="si">✅ ¡Misión aceptada! Ahí estaré</option>
+      <option value="no">❌ No podré esta vez, héroe</option>
+    </select>
+    <button class="rsvp-btn" onclick="confirmarMision()">🕷️ ¡CONFIRMAR MISIÓN!</button>
+    <div class="rsvp-success" id="rsvp-ok"></div>
+  </div>
+</section>
+
+
+<!-- ===================== CIERRE ===================== -->
+<section class="cierre-section">
+  <div class="cierre-title">¡TE<br>ESPERAMOS!</div>
+  <div class="cierre-subtitle">🕷️ Con un gran poder... viene una gran fiesta 🕷️</div>
+  <p style="font-family:'Bangers',cursive; font-size:20px; color:rgba(255,255,255,0.5); letter-spacing:2px; margin-bottom:40px;">
+    — Con cariño: Papá Julian y Mamá Elena —
+  </p>
+  <div class="cierre-firma">Invitación digital interactiva · Angel Trejo · Durango, México · 2026</div>
+</section>
+
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+// ============================================================
+// CANVAS DE TELARAÑAS GLOBAL (al tocar cualquier parte)
+// ============================================================
+const globalCanvas = document.getElementById('web-canvas');
+const globalCtx = globalCanvas.getContext('2d');
+let globalWebs = [];
+
+function resizeGlobalCanvas() {
+  globalCanvas.width = window.innerWidth;
+  globalCanvas.height = document.body.scrollHeight;
+}
+
+function drawGlobalWeb(x, y) {
+  const rays = 8 + Math.floor(Math.random() * 4);
+  const rings = 4 + Math.floor(Math.random() * 3);
+  const maxR = 60 + Math.random() * 80;
+  const color = Math.random() > 0.5 ? 'rgba(255,255,255,' : 'rgba(204,0,0,';
+  const web = { x, y, rays, rings, maxR, color, alpha: 0.7, born: Date.now() };
+  globalWebs.push(web);
+}
+
+function animateGlobalWebs() {
+  globalCtx.clearRect(0, 0, globalCanvas.width, globalCanvas.height);
+  const now = Date.now();
+  globalWebs = globalWebs.filter(w => now - w.born < 3000);
+  globalWebs.forEach(w => {
+    const age = (now - w.born) / 3000;
+    const a = w.alpha * (1 - age);
+    globalCtx.strokeStyle = w.color + a + ')';
+    globalCtx.lineWidth = 0.8;
+    for (let i = 0; i < w.rays; i++) {
+      const angle = (i / w.rays) * Math.PI * 2;
+      globalCtx.beginPath();
+      globalCtx.moveTo(w.x, w.y);
+      globalCtx.lineTo(w.x + Math.cos(angle) * w.maxR, w.y + Math.sin(angle) * w.maxR);
+      globalCtx.stroke();
+    }
+    for (let r = 1; r <= w.rings; r++) {
+      const radius = (r / w.rings) * w.maxR;
+      globalCtx.beginPath();
+      for (let i = 0; i <= w.rays; i++) {
+        const angle = (i / w.rays) * Math.PI * 2;
+        const px = w.x + Math.cos(angle) * radius;
+        const py = w.y + Math.sin(angle) * radius;
+        i === 0 ? globalCtx.moveTo(px, py) : globalCtx.lineTo(px, py);
+      }
+      globalCtx.closePath();
+      globalCtx.stroke();
+    }
+  });
+  requestAnimationFrame(animateGlobalWebs);
+}
+
+// Toque global en body
+document.body.addEventListener('touchstart', function(e) {
+  if (e.target.closest('button, input, select, .scratch-canvas, .web-target-area, .fecha-card, .programa-item')) return;
+  const t = e.touches[0];
+  const scrollY = window.scrollY || window.pageYOffset;
+  drawGlobalWeb(t.clientX, t.clientY + scrollY);
+  showComicWord(t.clientX, t.clientY);
+}, { passive: true });
+
+document.body.addEventListener('click', function(e) {
+  if (e.target.closest('button, input, select, .scratch-canvas, .web-target-area, .fecha-card, .programa-item')) return;
+  const scrollY = window.scrollY || window.pageYOffset;
+  drawGlobalWeb(e.clientX, e.clientY + scrollY);
+}, { passive: true });
+
+// ============================================================
+// EFECTOS CÓMIC (palabras flotantes)
+// ============================================================
+const comicWords = ['¡ZAP!','¡POW!','¡BAM!','¡WEB!','🕷️','¡BOOM!','🕸️','¡YAY!'];
+function showComicWord(x, y) {
+  if (Math.random() > 0.5) return;
+  const el = document.createElement('div');
+  el.className = 'comic-burst';
+  el.textContent = comicWords[Math.floor(Math.random() * comicWords.length)];
+  el.style.left = (x - 30) + 'px';
+  el.style.top = (y - 20) + 'px';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 900);
+}
+
+// ============================================================
+// BOTÓN HERO: DISPARA TELARAÑA
+// ============================================================
+function shootWebHero() {
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight + (window.scrollY || 0);
+      drawGlobalWeb(x, y);
+    }, i * 80);
+  }
+  const btn = document.getElementById('btn-shoot-hero');
+  btn.textContent = '🕸️ ¡¡ FUEGO!! 🕸️';
+  setTimeout(() => { btn.textContent = '🕸️ ¡LANZA UNA TELARAÑA!'; }, 1200);
+}
+
+// ============================================================
+// RASCA EL NÚMERO
+// ============================================================
+function initScratch() {
+  const container = document.getElementById('scratch-container');
+  const canvas = document.getElementById('scratch-canvas');
+  const ctx = canvas.getContext('2d');
+  const w = container.offsetWidth;
+  const h = container.offsetHeight;
+  canvas.width = w;
+  canvas.height = h;
+
+  // Fondo rasca-rasca (textura roja)
+  const grd = ctx.createLinearGradient(0, 0, w, h);
+  grd.addColorStop(0, '#CC0000');
+  grd.addColorStop(0.5, '#880000');
+  grd.addColorStop(1, '#CC0000');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, w, h);
+
+  // Texto encima del rasca
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  ctx.font = 'bold 16px Nunito, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('🕷️ ¡RASCA AQUÍ! 🕷️', w / 2, h / 2 - 8);
+  ctx.fillText('Con el dedo', w / 2, h / 2 + 18);
+
+  let scratching = false;
+  let revealed = false;
+
+  function scratch(x, y) {
+    if (revealed) return;
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.arc(x, y, 22, 0, Math.PI * 2);
+    ctx.fill();
+    checkReveal();
+  }
+
+  function checkReveal() {
+    const data = ctx.getImageData(0, 0, w, h).data;
+    let transparent = 0;
+    for (let i = 3; i < data.length; i += 4) {
+      if (data[i] < 128) transparent++;
+    }
+    const pct = transparent / (data.length / 4);
+    if (pct > 0.55 && !revealed) {
+      revealed = true;
+      ctx.clearRect(0, 0, w, h);
+      const msg = document.getElementById('scratch-msg');
+      msg.style.display = 'block';
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          const ex = Math.random() * window.innerWidth;
+          const ey = container.getBoundingClientRect().top + window.scrollY + Math.random() * 60;
+          drawGlobalWeb(ex, ey);
+        }, i * 100);
+      }
+    }
+  }
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    if (e.touches) {
+      return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+    }
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+
+  canvas.addEventListener('mousedown', e => { scratching = true; const p = getPos(e); scratch(p.x, p.y); });
+  canvas.addEventListener('mousemove', e => { if (!scratching) return; const p = getPos(e); scratch(p.x, p.y); });
+  canvas.addEventListener('mouseup', () => scratching = false);
+  canvas.addEventListener('touchstart', e => { e.preventDefault(); scratching = true; const p = getPos(e); scratch(p.x, p.y); }, { passive: false });
+  canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!scratching) return; const p = getPos(e); scratch(p.x, p.y); }, { passive: false });
+  canvas.addEventListener('touchend', () => scratching = false);
+}
+
+// ============================================================
+// FLIP CARDS - FECHA
+// ============================================================
+let flippedCount = 0;
+function flipCard(card) {
+  if (card.classList.contains('flipped')) return;
+  card.classList.add('flipped');
+  flippedCount++;
+  const rect = card.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+  const scrollY = window.scrollY || 0;
+  drawGlobalWeb(cx, cy + scrollY);
+  showComicWord(cx, cy);
+  if (flippedCount === 4) {
+    setTimeout(() => {
+      document.getElementById('fecha-done').classList.add('show');
+    }, 400);
+  }
+}
+
+// ============================================================
+// ZONA DE TELARAÑAS INTERACTIVA
+// ============================================================
+const webTarget = document.getElementById('web-target');
+const webSvg = document.getElementById('web-svg');
+const webHint = document.getElementById('web-hint-inner');
+let webShots = 0;
+let lastWebPoint = null;
+
+function getRelPos(el, ex, ey) {
+  const rect = el.getBoundingClientRect();
+  return { x: ex - rect.left, y: ey - rect.top };
+}
+
+function drawWebShot(x, y) {
+  webShots++;
+  if (webShots === 1) webHint.classList.add('hidden');
+
+  const W = webTarget.offsetWidth;
+  const H = webTarget.offsetHeight;
+
+  // Línea de origen si hay punto previo
+  if (lastWebPoint) {
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', lastWebPoint.x);
+    line.setAttribute('y1', lastWebPoint.y);
+    line.setAttribute('x2', x);
+    line.setAttribute('y2', y);
+    line.setAttribute('stroke', 'rgba(255,255,255,0.5)');
+    line.setAttribute('stroke-width', '1.5');
+    line.setAttribute('stroke-linecap', 'round');
+    webSvg.appendChild(line);
+  }
+
+  // Rayos de telaraña
+  const rays = 7 + Math.floor(Math.random() * 4);
+  for (let i = 0; i < rays; i++) {
+    const angle = (i / rays) * Math.PI * 2;
+    const len = 30 + Math.random() * 70;
+    const ex2 = x + Math.cos(angle) * len;
+    const ey2 = y + Math.sin(angle) * len;
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', x); line.setAttribute('y1', y);
+    line.setAttribute('x2', ex2); line.setAttribute('y2', ey2);
+    line.setAttribute('stroke', 'rgba(255,255,255,0.6)');
+    line.setAttribute('stroke-width', '1');
+    webSvg.appendChild(line);
+  }
+
+  // Anillos
+  for (let r = 1; r <= 3; r++) {
+    const radius = r * 22;
+    const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    let pts = '';
+    for (let i = 0; i < rays; i++) {
+      const angle = (i / rays) * Math.PI * 2;
+      pts += `${x + Math.cos(angle) * radius},${y + Math.sin(angle) * radius} `;
+    }
+    poly.setAttribute('points', pts.trim());
+    poly.setAttribute('fill', 'none');
+    poly.setAttribute('stroke', 'rgba(255,255,255,0.3)');
+    poly.setAttribute('stroke-width', '0.8');
+    webSvg.appendChild(poly);
+  }
+
+  // Punto central
+  const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  circle.setAttribute('cx', x); circle.setAttribute('cy', y); circle.setAttribute('r', 4);
+  circle.setAttribute('fill', '#CC0000');
+  webSvg.appendChild(circle);
+
+  lastWebPoint = { x, y };
+  showComicWord(x + webTarget.getBoundingClientRect().left, y + webTarget.getBoundingClientRect().top);
+
+  // Limpiar si hay muchas líneas
+  if (webSvg.childNodes.length > 120) {
+    while (webSvg.childNodes.length > 60) webSvg.removeChild(webSvg.firstChild);
+  }
+}
+
+function handleWebShoot(e) {
+  e.preventDefault();
+  const t = e.touches[0];
+  const p = getRelPos(webTarget, t.clientX, t.clientY);
+  drawWebShot(p.x, p.y);
+}
+
+function handleWebShootClick(e) {
+  const p = getRelPos(webTarget, e.clientX, e.clientY);
+  drawWebShot(p.x, p.y);
+}
+
+// ============================================================
+// PROGRAMA: EXPLOSIONES
+// ============================================================
+function explotar(item) {
+  if (item.classList.contains('exploded')) {
+    item.classList.remove('exploded');
+    const boom = item.querySelector('.programa-boom');
+    boom.style.display = 'none';
+    return;
+  }
+  item.classList.add('exploded');
+  const boom = item.querySelector('.programa-boom');
+  boom.style.display = 'block';
+  setTimeout(() => { boom.style.display = 'none'; }, 500);
+
+  const rect = item.getBoundingClientRect();
+  const scrollY = window.scrollY || 0;
+  drawGlobalWeb(rect.right, rect.top + scrollY);
+}
+
+// ============================================================
+// CONTADOR REGRESIVO
+// ============================================================
+function updateCountdown() {
+  const target = new Date('2026-12-26T16:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    ['c-dias','c-horas','c-min','c-seg'].forEach(id => document.getElementById(id).textContent = '00');
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('c-dias').textContent = String(d).padStart(2,'0');
+  document.getElementById('c-horas').textContent = String(h).padStart(2,'0');
+  document.getElementById('c-min').textContent = String(m).padStart(2,'0');
+  document.getElementById('c-seg').textContent = String(s).padStart(2,'0');
+}
+
+// ============================================================
+// RSVP
+// ============================================================
+function confirmarMision() {
+  const nombre = document.getElementById('r-nombre').value.trim();
+  const cant   = document.getElementById('r-cant').value;
+  const conf   = document.getElementById('r-conf').value;
+  if (!nombre || !cant || !conf) { alert('¡Héroe! Completa todos los campos 🕷️'); return; }
+  const ok = document.getElementById('rsvp-ok');
+  if (conf === 'si') {
+    ok.innerHTML = `🕷️ ¡MISIÓN ACEPTADA!<br><span style="font-size:18px;color:white;">${nombre}, ¡te esperamos con ${cant}!<br>¡Será ÉPICO! 🕸️</span>`;
+  } else {
+    ok.innerHTML = `😢 ¡Entendido, ${nombre}!<br><span style="font-size:18px;color:white;">Nos hará falta tu presencia, héroe.<br>¡Próxima vez no faltes!</span>`;
+  }
+  ok.style.display = 'block';
+  for (let i = 0; i < 8; i++) {
+    setTimeout(() => {
+      drawGlobalWeb(Math.random() * window.innerWidth, Math.random() * window.innerHeight + (window.scrollY||0));
+    }, i * 120);
+  }
+}
+
+// ============================================================
+// REVEAL ON SCROLL
+// ============================================================
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(el => obs.observe(el));
+
+// ============================================================
+// INIT
+// ============================================================
+window.addEventListener('resize', () => {
+  resizeGlobalCanvas();
+});
+
+window.addEventListener('load', () => {
+  resizeGlobalCanvas();
+  animateGlobalWebs();
+  initScratch();
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+});
+</script>
+</body>
+</html>
