@@ -4,10 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AT Design Studio · Portafolio Creativo</title>
+<meta name="description" content="Invitaciones digitales interactivas, flyers, páginas web y edición de video en Durango, México. Diseños 100% personalizados con entrega en 1 a 3 días.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://i.ibb.co/23Mg6CwR/Firma-3-1.png">
+<link rel="apple-touch-icon" href="https://i.ibb.co/23Mg6CwR/Firma-3-1.png">
+
+<!-- Open Graph / WhatsApp / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AT Design Studio · Invitaciones Digitales, Flyers y Diseño Web">
+<meta property="og:description" content="Invitaciones digitales interactivas, flyers, páginas web y edición de video en Durango, México. Diseños 100% personalizados con entrega en 1 a 3 días.">
+<meta property="og:image" content="https://i.ibb.co/23Mg6CwR/Firma-3-1.png">
+<meta property="og:url" content="https://atdesignstudio.com/">
+<meta property="og:locale" content="es_MX">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AT Design Studio · Invitaciones Digitales, Flyers y Diseño Web">
+<meta name="twitter:description" content="Invitaciones digitales interactivas, flyers, páginas web y edición de video en Durango, México.">
+<meta name="twitter:image" content="https://i.ibb.co/23Mg6CwR/Firma-3-1.png">
+
+<!-- Preconnect para acelerar la carga de Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <link href="style.css" rel="stylesheet">
 
+<!-- Google Analytics (GA4) — reemplaza G-XXXXXXXXXX con tu ID real de Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 
 </head>
 <body>
@@ -18,7 +49,7 @@
 
 <!-- ============ NAVBAR ============ -->
 <nav id="navbar">
-  <a href="#inicio" class="nav-logo"><img src="https://i.ibb.co/23Mg6CwR/Firma-3-1.png" >
+  <a href="#inicio" class="nav-logo"><img src="https://i.ibb.co/23Mg6CwR/Firma-3-1.png" alt="AT Design Studio" onerror="this.style.display='none'">
 </a>
 
 
@@ -32,7 +63,7 @@
       WhatsApp
     </a>
   </div>
-  <div class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()">
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()" role="button" tabindex="0" aria-label="Abrir menú de navegación" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleMobileNav()}">
     <span></span><span></span><span></span>
   </div>
 </nav>
@@ -47,18 +78,19 @@
 
 
 <!-- ============ HERO ============ -->
+<!-- ============ HERO ============ -->
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
 
-  <div class="hero-tag">✦ Estudio Creativo Digital · Durango, México</div>
+  <div class="hero-tag">✨ Especialistas en Invitaciones Web y en video</div>
 
   <h1 class="hero-title">
-    Diseños que<br><span class="accent">enamoran</span> y<br>venden
+    Invitaciones que<br><span class="accent">cobran vida</span> y<br>diseño digital
   </h1>
 
   <p class="hero-sub">
-    Invitaciones digitales e interactivas, flyers, páginas web, edición de video y campañas publicitarias. Todo lo que tu marca necesita para brillar.
+    Diseñamos invitaciones web e interactivas premium para que sorprendas a tus invitados en su celular, además de flyers publicitarios, páginas web y edición de video profesional para potenciar tu marca.
   </p>
 
   <div class="hero-btns">
@@ -93,19 +125,19 @@
   <div class="promo-track" id="promo-track">
     <!-- se duplica por JS para loop infinito -->
     <div class="promo-card" onclick="openLightbox('promo1')">
-      <img src="https://i.ibb.co/S74bkzHR/Chat-GPT-Image-4-may-2026-07-05-21-p-m.png" alt="Paquete Impulso Redes">
+      <img src="https://i.ibb.co/S74bkzHR/Chat-GPT-Image-4-may-2026-07-05-21-p-m.png" alt="Paquete Impulso Redes" loading="lazy" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
 
 
       <div class="promo-overlay"><span class="promo-label">📢 PAQUETE IMPULSO REDES A TAN SOLO $399</span></div>
     </div>
     <div class="promo-card" onclick="openLightbox('promo2')">
-      <img src="https://i.ibb.co/5gCmqtFX/Chat-GPT-Image-4-may-2026-07-05-08-p-m.png" alt="Invitaciones Digitales">
+      <img src="https://i.ibb.co/5gCmqtFX/Chat-GPT-Image-4-may-2026-07-05-08-p-m.png" alt="Invitaciones Digitales" loading="lazy" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
 
       <div class="promo-overlay"><span class="promo-label">🎉 INVITACIONES DIGITALES DESDE $249</span></div>
     </div>
 
     <div class="promo-card" onclick="openLightbox('promo3')">
-      <img src="https://i.ibb.co/NgJqp5DW/Chat-GPT-Image-5-may-2026-08-29-55-p-m.png" alt="Flayers">
+      <img src="https://i.ibb.co/DfxpW2FH/Chat-GPT-Image-2-jun-2026-10-04-36-p-m.png" alt="Flayers" loading="lazy" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
 
 
       <div class="promo-overlay"><span class="promo-label">✨ Flayers Personalizados a tan solo $99</span></div>
@@ -123,318 +155,81 @@
 </div>
 
 
+<!-- ============ WEB INVITATION FEATURES ============ -->
+<div class="features-section-wrapper">
+  <section class="invitation-features reveal">
+    <div class="section-header">
+      <div class="section-eyebrow">¿Por qué elegir una invitación web?</div>
+      <h2 class="section-title">El formato del futuro para tu evento</h2>
+      <p class="section-desc">Olvídate del papel. Nuestras invitaciones interactivas ofrecen una experiencia premium para tus invitados directamente en su celular con herramientas integradas.</p>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-box">
+        <div class="feature-icon">⏳</div>
+        <h3>Cuenta Regresiva</h3>
+        <p>Genera expectativa mostrando los días, horas y minutos restantes para el gran día.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">📍</div>
+        <h3>Ubicación GPS</h3>
+        <p>Tus invitados sabrán cómo llegar conectando directamente con Google Maps y Waze.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">✉️</div>
+        <h3>Confirmación RSVP</h3>
+        <p>Recibe la lista de tus invitados confirmados directamente en tu WhatsApp organizada y sin rodeos.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">🎵</div>
+        <h3>Música de Fondo</h3>
+        <p>Ambientación musical personalizada con su canción favorita que se reproduce al abrir la invitación.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">📸</div>
+        <h3>Galería de Fotos</h3>
+        <p>Comparte tus fotos favoritas o de tu sesión de fotos previa en un elegante carrusel integrado.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">🎫</div>
+        <h3>Pases Digitales</h3>
+        <p>Organiza el acceso de tus invitados enviándoles pases individuales con boletos asignados.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+
 <!-- ============ PORTAFOLIO ============ -->
 <div style="background:var(--oscuro);padding:100px 0">
 <div class="section" id="portafolio" style="padding-top:0;padding-bottom:0">
   <div class="section-header reveal">
     <div class="section-eyebrow">Mi trabajo</div>
     <h2 class="section-title">Portafolio Creativo</h2>
-    <p class="section-desc">Explora mis proyectos por categoría. Haz clic en cualquier tarjeta para ver el detalle completo. </p><br><P><span style="font-family: 'Arial', sans-serif;  font-size: 20px;">ATENCION!!! SE CAMBIARON DATOS REALES DE ALGUNAS INVITACIONES QUE ESTAN ACTIVAS, PARA PROTECCION DE USUARIOS</span></p>
+    <p class="section-desc">Explora mis proyectos por categoría. Haz clic en cualquier tarjeta para ver el detalle completo.</p><br>
+    <p><span style="font-family: 'Arial', sans-serif; font-size: 14px; color: var(--gris-claro); opacity: 0.85;">⚠️ ATENCIÓN: SE CAMBIARON LOS DATOS REALES DE ALGUNAS INVITACIONES ACTIVAS PARA PROTECCIÓN DE LA PRIVACIDAD DE LOS USUARIOS</span></p>
   </div>
 
   <!-- Filtros de categoría -->
   <div class="cat-nav reveal">
-    <button class="cat-btn active" onclick="filterCat('todo')">✦ Todo</button>
-    <button class="cat-btn" onclick="filterCat('invitaciones')">🎉 Invitaciones Digitales</button>
-    <button class="cat-btn" onclick="filterCat('flyers')">📢 Flyers</button>
-    <button class="cat-btn" onclick="filterCat('web')">🌐 Páginas Web</button>
-    <button class="cat-btn" onclick="filterCat('fotos')">📷 Edición de Fotos</button>
-    <button class="cat-btn" onclick="filterCat('video')">🎬 Edición de Video</button>
-    <button class="cat-btn" onclick="filterCat('campanas')">🚀 Campañas</button>
+    <button class="cat-btn active" onclick="filterCat('todo', this)">✦ Todo</button>
+    <button class="cat-btn" onclick="filterCat('invitaciones', this)">🎉 Invitaciones Digitales</button>
+    <button class="cat-btn" onclick="filterCat('flyers', this)">📢 Flyers</button>
+    <button class="cat-btn" onclick="filterCat('web', this)">🌐 Páginas Web</button>
+    <button class="cat-btn" onclick="filterCat('fotos', this)">📷 Edición de Fotos</button>
+    <button class="cat-btn" onclick="filterCat('video', this)">🎬 Edición de Video</button>
+    <button class="cat-btn" onclick="filterCat('campanas', this)">🚀 Campañas</button>
   </div>
 
-  <!-- Grid -->
+  <!-- Grid Dinámico -->
   <div class="portfolio-grid reveal" id="portfolio-grid">
-
-    <!-- INVITACIONES -->
-    <div class="project-card visible" data-cat="invitaciones"
-         onclick="openProject({title:'Invitación XV Años · María Guadalupe',desc:'Invitación digital elegante con tema de rosas con detalle en dorado, código de vestimenta, contador regresivo, ubicación, musica de fondo y confirmación de asistencia RSVP.',cat:'Invitaciones Web',tags:['HTML','Interactiva','Mariposas', 'Musica de fondo'],url:'https://invitacionxvdigital.netlify.app/',img:'PROMO4_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/1YrXtsjt/Captura-de-pantalla-20.png" alt="Flyer Invitaciones" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Invitación Web</div>
-        <div class="card-new"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Invitaciones Web</div>
-        <div class="card-title">XV Años · María Guadalupe</div>
-        <div class="card-desc">Tema mariposas rosa pastel. Contador, RSVP, mapa y programa del evento.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Elegante</span><span class="card-tag">Interactiva</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-      <div class="project-card visible" data-cat="invitaciones"
-         onclick="openProject({title:'Invitación XV Años · Paola Guadalupe',desc:'Invitación digital elegante con tema de mariposas, código de vestimenta, contador regresivo, ubicación, con tickets personalizables para la entrada del salon y confirmación de asistencia RSVP.',cat:'Invitaciones Web',tags:['HTML','Interactiva','Ticket', ,'Personalizable'],url:'https://ejemplo-de-invitacion-xv-tickets.vercel.app/',img:'PROMO8_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/YF8syQbH/Captura-de-pantalla-35.png" alt="Flyer Invitaciones" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Invitación Web</div>
-        <div class="card-new"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Invitaciones Web</div>
-        <div class="card-title">XV Años · Paola Guadalupe</div>
-        <div class="card-desc">Tema Rosas Detalles en dorados. Contador, RSVP, Tiket personalizable mapa y programa del evento.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Elegante</span><span class="card-tag">Interactiva</span><span class="card-tag">Musical</span><span class="card-tag">Con Tickets personalizables</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card visible" data-cat="invitaciones"
-         onclick="openProject({title:'Invitación Cumpleaños · Adrián Spiderman',desc:'Invitación interactiva con telarañas animadas, rasca y descubre el número, flip cards de fecha, zona de disparo y confirmación épica.',cat:'Invitaciones Web',tags:['HTML','Interactiva','Spiderman'],url:'https://invitacionspidermaninteractive.netlify.app/',img:'PROMO5_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/ZpqwKC5D/Captura-de-pantalla-21.png" alt="Flyer Invitaciones" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Invitación Web</div>
-        <div class="card-new"></div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Invitaciones Web</div>
-        <div class="card-title">Cumpleaños Adrián · Spiderman</div>
-        <div class="card-desc">Telarañas al tocar, rasca y descubre la edad, flip cards de fecha y más.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Infantil</span><span class="card-tag">Interactiva</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card visible" data-cat="invitaciones"
-         onclick="openProject({title:'Invitación Cumpleaños · Fernanda Abejita chuiquitita',desc:'Invitación interactiva Abejita Chiquitita Plin Plin, Abejitas te siguen, Abeja baila, Zona de POLINIZACION con flores que giran.',cat:'Invitaciones Web',tags:['HTML','Interactiva','Abejita Chiquitita Plin Plin'],url:'https://abejita-chiquitita.vercel.app/',img:'PROMO9_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/d4DmvpM9/Captura-de-pantalla-36.png" alt="Flyer Invitaciones" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Invitación Web</div>
-        <div class="card-new">NUEVO</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Invitaciones Web</div>
-        <div class="card-title">Cumpleaños Fernanda · Abejita Chiquitita</div>
-        <div class="card-desc">Invitación interactiva Abejita Plin Plin, Abejitas te siguen, Abeja baila y más.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Infantil</span><span class="card-tag">Interactiva</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card visible" data-cat="invitaciones"
-         onclick="openProject({title:'Invitación Graduacion Preescolar · Maria Tema Bluey ',desc:'Invitación En video, Tematica de Bluey, incluyen 2 fotografias dentro del video.',cat:'Invitaciones en video',tags:['Video','HD','Tema Bluey'],url:'https://www.tiktok.com/@eduardo_at_design_studio/video/7645173206613052689?is_from_webapp=1&sender_device=pc&web_id=7630303453944563218',img:'PROMO12_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/HpVDNHn7/Captura-de-pantalla-54.png" alt="Flyer Invitaciones" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Invitación en video</div>
-        <div class="card-new">NUEVO</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Invitacion en video</div>
-        <div class="card-title">Graduacion Maria · Tema Bluey</div>
-        <div class="card-desc">Invitación Digital Tema Bluey, Incluye tema de la caricatura, dos fotografias de la festejada y mas.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Infantil</span><span class="card-tag">Digital</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card visible" data-cat="invitaciones"
-         onclick="openProject({title:'Invitación 1 añito · Juan Antonio Tema Goku Bebe ',desc:'Invitación En video, Tematica de Goku Bebe, incluye 1 fotografias dentro del video.',cat:'Invitaciones en video',tags:['Video','HD','Tema Goku Bebe'],url:'https://www.tiktok.com/@eduardo_at_design_studio/video/7645183516325563656?is_from_webapp=1&sender_device=pc&web_id=7630303453944563218',img:'PROMO13_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/XfCQmsG7/Captura-de-pantalla-58.png" alt="Flyer Invitaciones" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Invitación en video</div>
-        <div class="card-new">NUEVO</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Invitacion en video</div>
-        <div class="card-title">Primer añito Juan Antonio · Tema Goku Babe</div>
-        <div class="card-desc">Invitación Digital Tema Goku Bebe, Incluye tema de la caricatura, una fotografia del festejado y mas.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Infantil</span><span class="card-tag">Digital</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-
-     <div class="project-card visible" data-cat="invitaciones"
-         onclick="openProject({title:'Invitación Graduacion Preescolar · Velia Tema La Casa de las Muñecas de Gabby ',desc:'Invitación En video, Tematica de La Casa de las Muñecas de Gabby, incluyen 2 fotografias dentro del video, musica en alta calidad y video en HD',cat:'Invitaciones en video',tags:['Video','HD','Tema La Casa de las Muñecas de Gabby'],url:'https://www.tiktok.com/@eduardo_at_design_studio/video/7645191849308589320?is_from_webapp=1&sender_device=pc&web_id=7630303453944563218',img:'PROMO14_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/BmzkGf8/Captura-de-pantalla-56.png" alt="Flyer Invitaciones" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Invitación en video</div>
-        <div class="card-new">NUEVO</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Invitacion en video</div>
-        <div class="card-title">Graduacion Velia · Tema La Casa de las Muñecas de Gabby</div>
-        <div class="card-desc">Invitación Digital Tema La Casa de las Muñecas de Gabby, Incluye tema de la caricatura, dos fotografias de la festejada y mas.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Infantil</span><span class="card-tag">Digital</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    
-
-
-
-    <div class="project-card visible" data-cat="invitaciones add-placeholder"
-         onclick="showAddPrompt('invitaciones')">
-      <div class="add-card">
-        <div class="add-icon">+</div>
-        <div class="add-text">Próximamente más ejemplos</div>
-      </div>
-    </div>
-
-    <!-- FLYERS -->
-    <div class="project-card visible" data-cat="flyers"
-         onclick="openProject({title:'Flyer · Paquete Impulso Redes',desc:'Flyer publicitario para paquete de contenido en redes sociales. 5 posts, 2 videos y 2 historias animadas. Diseño con efecto de profundidad y mockups de celular.',cat:'Flyers Publicitarios',tags:['Canva','Redes Sociales','Publicidad'],img:'PROMO1_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/S74bkzHR/Chat-GPT-Image-4-may-2026-07-05-21-p-m.png" alt="Flyer Impulso Redes" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Flyer</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Flyers Publicitarios</div>
-        <div class="card-title">Paquete Impulso Redes</div>
-        <div class="card-desc">Diseño para paquete de contenido digital. $399 pesos todo incluido.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Redes</span><span class="card-tag">Marketing</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card visible" data-cat="flyers"
-         onclick="openProject({title:'Flyer · Invitaciones Digitales',desc:'Flyer promocional para servicio de invitaciones digitales e interactivas. Promoción de primavera con precio especial desde $249 pesos.',cat:'Flyers Publicitarios',tags:['Canva','Eventos','Promoción'],img:'PROMO2_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/5gCmqtFX/Chat-GPT-Image-4-may-2026-07-05-08-p-m.png" alt="Flyer Invitaciones" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Flyer</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Flyers Publicitarios</div>
-        <div class="card-title">Promo Invitaciones Digitales</div>
-        <div class="card-desc">Flyer de temporada para invitaciones digitales e interactivas para fiestas.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Eventos</span><span class="card-tag">Promo</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card visible" data-cat="flyers add-placeholder"
-         onclick="showAddPrompt('flyers')">
-      <div class="add-card">
-        <div class="add-icon">+</div>
-        <div class="add-text">Próximamente más ejemplos</div>
-      </div>
-    </div>
-
-    <!-- WEB -->
-<div class="project-card visible" data-cat="web"
-         onclick="openProject({title:'Creacion de Elementos web · Paginas web',desc:'Creamos tu pagina web justo a tus necesidades',cat:'Sitio Web de Eventos',tags:['Web', 'Creacion','Frontend'],url:'https://la-troje-salon-de-eventos.netlify.app/', img:'PROMO7_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/k60FbC8w/Captura-de-pantalla-23.png" alt="Edicion de Video" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Pagina Web</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Sitio Web de Eventos</div>
-        <div class="card-title">Creamos tu pagina web justo a tus necesidades</div>
-        <div class="card-desc">Creacion completa desde frontend hasta el backend.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Web</span><span class="card-tag">Elementos</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card visible" data-cat="web add-placeholder"
-         onclick="showAddPrompt('web')">
-      <div class="add-card">
-        <div class="add-icon">🌐</div>
-        <div class="add-text">Próximos proyectos web</div>
-      </div>
-    </div>
-
-    <!-- FOTOS -->
-     <div class="project-card visible" data-cat="fotos"
-         onclick="openProject({title:'Lona de Publicidad Tratamiento para el cabello',desc:'Diseñamos la lona de publicidad que necesitas,  y con la que sentirias que tu marca proyecta lo que te imaginabas, tenemos el diseño que te gusta, contactanos.',cat:'Lona de Publicidad',tags:['Canva','Lona','Publicidad'],img:'PROMO10_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/HL7x87gB/Lona-de-publicidad-Tratamiento-Capilar.jpg" alt="Lona de publicidad" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Lona de publicidad</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Lona de publicidad Tratamiento cabello</div>
-        <div class="card-title">Creamos tu lona a tu estilo</div>
-        <div class="card-desc">Diseñamos tu lona de publicidad desde $99 pesos</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Lona</span><span class="card-tag">Marketing</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card visible" data-cat="fotos"
-         onclick="openProject({title:'Lona de Publicidad Tratamiento de uñas',desc:'Diseñamos la lona de publicidad que necesitas, y con la que sentirias que tu marca proyecta lo que te imaginabas, tenemos el diseño que te gusta, contactanos.',cat:'Lona de Publicidad',tags:['Canva','Lona','Publicidad'],img:'PROMO11_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/ymshRjRT/Lona-Alejandra-Rubin-1.jpg" alt="Lona de publicidad" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Lona de publicidad</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Lona de publicidad Tratamiento cabello</div>
-        <div class="card-title">Creamos tu lona a tu estilo</div>
-        <div class="card-desc">Diseñamos tu lona de publicidad desde $99 pesos</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Lona</span><span class="card-tag">Marketing</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card visible" data-cat="fotos add-placeholder"
-         onclick="showAddPrompt('fotos')">
-      <div class="add-card">
-        <div class="add-icon">📷</div>
-        <div class="add-text">Próximos trabajos de edición</div>
-      </div>
-    </div>
-
-    <!-- VIDEO -->
-<div class="project-card visible" data-cat="video"
-         onclick="openProject({title:'Edicion de Video · Visualizer',desc:'Edicion de un video de musica Visualizer',cat:'Edicion de Video',tags:['Video', 'Edicion','Visualizer','Publicidad'],url:'https://www.youtube.com/watch?v=TT9qH5nSXx4&list=PLR4Zgwc32WNf3AMnBKuahu5pm4Dl2oQuw', img:'PROMO6_SRC',type:'image'})">
-      <div class="card-thumb">
-        <img src="https://i.ibb.co/PGFD4zDp/Captura-de-pantalla-22.png" alt="Edicion de Video" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-        <div class="card-badge">Edicion de video</div>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">Vusializer music</div>
-        <div class="card-title">Editamos tu video a tu gusto</div>
-        <div class="card-desc">Edicion de Visualizer musical.</div>
-        <div class="card-footer">
-          <div class="card-tags"><span class="card-tag">Edicion</span><span class="card-tag">Video</span></div>
-          <div class="card-arrow">→</div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="project-card visible" data-cat="video add-placeholder"
-         onclick="showAddPrompt('video')">
-      <div class="add-card">
-        <div class="add-icon">🎬</div>
-        <div class="add-text">Próximos proyectos de video</div>
-      </div>
-    </div>
-
-    <!-- CAMPAÑAS -->
-    <div class="project-card visible" data-cat="campanas add-placeholder"
-         onclick="showAddPrompt('campanas')">
-      <div class="add-card">
-        <div class="add-icon">🚀</div>
-        <div class="add-text">Próximas campañas</div>
-      </div>
-    </div>
-
+    <!-- Se carga dinámicamente con JavaScript desde script.js -->
   </div><!-- /portfolio-grid -->
+
+  <!-- Botón para ir cargando más proyectos por lotes en la vista "Todo" -->
+  <div class="load-more-wrap" id="load-more-wrap" style="display:none">
+    <button class="btn-secondary" onclick="loadMoreProjects()">Cargar más proyectos ↓</button>
+  </div>
 </div>
 </div><!-- /bg oscuro -->
 
@@ -487,6 +282,39 @@
 </div>
 
 
+<!-- ============ TESTIMONIOS ============ -->
+<!-- EDITAR: pon el link de cada captura de WhatsApp/reseña en el src="" vacío de cada .testimonial-shot -->
+<div class="section" id="testimonios">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Lo que dicen mis clientes</div>
+    <h2 class="section-title">Confianza que se nota</h2>
+    <p class="section-desc">Capturas reales de conversaciones y reseñas de quienes ya confiaron en su proyecto.</p>
+  </div>
+  <div class="testimonials-carousel-wrap reveal">
+    <div class="testimonials-track" id="testimonials-track">
+      <div class="testimonial-shot">
+        <img src="reco 1.png" alt="Captura de reseña de cliente 1" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 2.png" alt="Captura de reseña de cliente 2" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 3.png" alt="Captura de reseña de cliente 3" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 4.png" alt="Captura de reseña de cliente 4" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 5.png" alt="Captura de reseña de cliente 5" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 6.png" alt="Captura de reseña de cliente 6" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- ============ CTA ============ -->
 <div class="cta-section reveal" id="contacto">
   <div class="section-eyebrow" style="margin-bottom:16px">¿Listo para empezar?</div>
@@ -506,20 +334,20 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">
-      <img src="https://i.ibb.co/23Mg6CwR/Firma-3-1.png" alt="AT Design Studio">
+      <img src="https://i.ibb.co/23Mg6CwR/Firma-3-1.png" alt="AT Design Studio" onerror="this.style.display='none'">
       <p>Diseño creativo digital en Durango, México. Invitaciones, flyers, webs, video y campañas publicitarias.</p>
     </div>
     <div class="footer-social">
       <div class="social-title">Sígueme</div>
       <div class="social-links">
-        <a href="https://www.facebook.com/ATDesignStudioDGO" target="_blank" class="social-link social-fb" title="Facebook">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <a href="https://www.facebook.com/ATDesignStudioDGO" target="_blank" class="social-link social-fb" title="Facebook" aria-label="Facebook">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
         
       </div>
 <div class="social-title">Contactame</div>
-      <a href="https://wa.me/526182530067?text=Hola%20Angel!%20Vi%20tu%20portafolio" target="_blank" class="social-link social-wa" title="WhatsApp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <a href="https://wa.me/526182530067?text=Hola%20Angel!%20Vi%20tu%20portafolio" target="_blank" class="social-link social-wa" title="WhatsApp" aria-label="WhatsApp">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       
     </div>
@@ -534,20 +362,25 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© <span id="footer-year"></span> <span>AT Design Studio</span> · By Angel Trejo · Todos los derechos reservados</div>
+    <div class="footer-copy">© <span id="footer-year"></span> <span>AT Design Studio</span> </div><div><br> Angel Trejo <br> Todos los derechos reservados</div>
     <div class="footer-year">Durango, Dgo. · México 🇲🇽</div>
   </div>
 </footer>
 
 
-<!-- ============ Boton Flotante ============ -->
-<button id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ir arriba">
+<!-- ============ Boton Flotante: subir arriba ============ -->
+<button id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ir arriba" aria-label="Volver arriba">
   ↑
 </button>
 
+<!-- ============ Boton Flotante: WhatsApp persistente ============ -->
+<a id="btn-whatsapp" href="https://wa.me/526182530067?text=Hola%20Angel!%20Vi%20tu%20portafolio%20y%20me%20interesa%20un%20proyecto" target="_blank" title="Escríbeme por WhatsApp" aria-label="Escríbeme por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <!-- ============ LIGHTBOX ============ -->
 <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
-  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
   <div class="lb-content" id="lb-content"></div>
 </div>
 
