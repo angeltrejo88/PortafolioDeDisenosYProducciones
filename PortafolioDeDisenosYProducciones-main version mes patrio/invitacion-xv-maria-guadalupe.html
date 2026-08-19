@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XV Años · María Guadalupe Vargas Torres</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rosa: #f2a8c4;
+    --rosa-claro: #fde8f0;
+    --rosa-oscuro: #c97097;
+    --dorado: #c9a96e;
+    --dorado-claro: #f5e9d3;
+    --crema: #fdf6f0;
+    --gris-oscuro: #2a2a2a;
+    --gris-medio: #555;
+    --blanco: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--crema);
+    color: var(--gris-oscuro);
+    overflow-x: hidden;
+  }
+
+  /* ---- HERO / PORTADA ---- */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #1a0a10 0%, #3b1627 45%, #5c2040 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23f2a8c4'%3E%3Cpath d='M40 10 C30 0 10 20 20 30 C10 30 0 40 10 50 C0 60 20 70 30 60 C30 70 40 80 40 70 C40 80 50 70 50 60 C60 70 80 60 70 50 C80 40 70 30 60 30 C70 20 50 0 40 10Z' opacity='0.5'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 120px;
+  }
+
+  /* Mariposas flotantes decorativas */
+  .butterfly {
+    position: absolute;
+    opacity: 0;
+    animation: floatButterfly linear infinite;
+    pointer-events: none;
+  }
+  .butterfly svg { width: 40px; height: 40px; }
+
+  @keyframes floatButterfly {
+    0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.4; }
+    100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
+  }
+
+  .hero-badge {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 16px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .hero-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 9vw, 88px);
+    color: var(--blanco);
+    line-height: 1.05;
+    margin-bottom: 8px;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .hero-nombre span {
+    display: block;
+    font-style: italic;
+    color: var(--rosa);
+  }
+
+  .hero-xv {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(80px, 18vw, 160px);
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--dorado);
+    line-height: 1;
+    margin: 4px 0;
+    animation: fadeUp 1s ease 0.5s both;
+    letter-spacing: -2px;
+  }
+
+  .hero-anios {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 38px);
+    color: var(--dorado);
+    font-style: italic;
+    letter-spacing: 6px;
+    animation: fadeUp 1s ease 0.6s both;
+    margin-bottom: 32px;
+  }
+
+  .hero-fecha-pill {
+    background: rgba(242, 168, 196, 0.12);
+    border: 1px solid rgba(242, 168, 196, 0.4);
+    border-radius: 50px;
+    padding: 10px 28px;
+    font-size: 14px;
+    color: var(--rosa);
+    letter-spacing: 1.5px;
+    animation: fadeUp 1s ease 0.8s both;
+    margin-bottom: 48px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.4);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s ease infinite;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- DIVISOR DECORATIVO ---- */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px 0 10px;
+    color: var(--dorado);
+    font-size: 20px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 80px;
+    background: linear-gradient(to right, transparent, var(--dorado));
+  }
+  .divider::after {
+    background: linear-gradient(to left, transparent, var(--dorado));
+  }
+
+  /* ---- SECCIONES GENERALES ---- */
+  section {
+    padding: 80px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rosa-oscuro);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    text-align: center;
+    color: var(--gris-oscuro);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--rosa-oscuro);
+  }
+
+  /* ---- BIENVENIDA ---- */
+  .bienvenida-section {
+    background: linear-gradient(180deg, var(--crema) 0%, #fff 100%);
+    padding: 80px 24px;
+  }
+
+  .bienvenida-card {
+    max-width: 720px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    border: 1px solid rgba(201, 160, 110, 0.25);
+    padding: 56px 48px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(193, 112, 151, 0.08);
+  }
+
+  .bienvenida-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 48px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--rosa-claro);
+    line-height: 1;
+  }
+
+  .bienvenida-texto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2.5vw, 22px);
+    line-height: 1.9;
+    color: var(--gris-medio);
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+  }
+
+  .bienvenida-firmas {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .firma {
+    text-align: center;
+  }
+
+  .firma-nombre {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--rosa-oscuro);
+  }
+
+  .firma-rol {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #aaa;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ---- FOTO QUINCEAÑERA ---- */
+  .foto-section {
+    background: linear-gradient(135deg, #3b1627, #5c2040, #3b1627);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .foto-section .section-title {
+    color: var(--blanco);
+  }
+
+  .foto-section .section-label {
+    color: var(--dorado);
+  }
+
+  .fotos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    max-width: 800px;
+    margin: 40px auto 0;
+  }
+
+  .foto-frame {
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    border: 2px solid rgba(201, 160, 110, 0.4);
+    position: relative;
+  }
+
+  .foto-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .foto-frame:hover img { transform: scale(1.04); }
+
+  .foto-frame-grande {
+    grid-row: span 2;
+    aspect-ratio: auto;
+    min-height: 400px;
+  }
+
+  /* ---- CONTADOR ---- */
+  .contador-section {
+    background: white;
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .contador-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 48px;
+  }
+
+  .contador-item {
+    background: linear-gradient(135deg, #3b1627, #5c2040);
+    color: white;
+    border-radius: 20px;
+    padding: 32px 28px;
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contador-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(242, 168, 196, 0.07);
+    border-radius: inherit;
+  }
+
+  .contador-numero {
+    font-family: 'Playfair Display', serif;
+    font-size: 58px;
+    line-height: 1;
+    color: var(--rosa);
+    font-weight: 600;
+    display: block;
+  }
+
+  .contador-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 8px;
+    display: block;
+  }
+
+  .contador-mensaje {
+    margin-top: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--rosa-oscuro);
+  }
+
+  /* ---- PROGRAMA / ITINERARIO ---- */
+  .programa-section {
+    padding: 80px 24px;
+    background: var(--crema);
+  }
+
+  .programa-timeline {
+    max-width: 600px;
+    margin: 48px auto 0;
+    position: relative;
+  }
+
+  .programa-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--rosa), var(--dorado), var(--rosa), transparent);
+  }
+
+  .programa-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .programa-item:nth-child(even) { flex-direction: row-reverse; }
+
+  .programa-dot {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rosa-oscuro), var(--rosa));
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--rosa);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .programa-contenido {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 24px;
+    flex: 1;
+    border: 1px solid rgba(201, 160, 110, 0.2);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  }
+
+  .programa-hora {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rosa-oscuro);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .programa-evento {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gris-oscuro);
+    margin-bottom: 4px;
+  }
+
+  .programa-lugar {
+    font-size: 13px;
+    color: #999;
+  }
+
+  /* ---- MÚSICA ---- */
+  .musica-section {
+    background: linear-gradient(135deg, #0a0a0a, #1a0a10, #0f0f0f);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .musica-section .section-title { color: white; }
+  .musica-section .section-label { color: var(--dorado); }
+
+  .musica-card {
+    max-width: 600px;
+    margin: 40px auto 0;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201, 160, 110, 0.3);
+    border-radius: 24px;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .musica-foto {
+    width: 200px;
+    height: 150px;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 2px solid rgba(201, 160, 110, 0.4);
+  }
+
+  .musica-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: white;
+    text-align: center;
+  }
+
+  .musica-nombre span {
+    display: block;
+    font-style: italic;
+    color: var(--rosa);
+    font-size: 20px;
+  }
+
+  .musica-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .badge {
+    background: rgba(242, 168, 196, 0.12);
+    border: 1px solid rgba(242, 168, 196, 0.35);
+    color: var(--rosa);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .musica-nota {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    font-size: 16px;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  .musica-notas-animadas {
+    display: flex;
+    gap: 8px;
+    font-size: 22px;
+    animation: notasPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes notasPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ---- UBICACIÓN ---- */
+  .ubicacion-section {
+    padding: 80px 24px;
+    background: white;
+  }
+
+  .ubicacion-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: 48px auto 0;
+  }
+
+  .ubicacion-card {
+    background: var(--crema);
+    border: 1px solid rgba(201, 160, 110, 0.25);
+    border-radius: 20px;
+    padding: 32px 28px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ubicacion-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(193, 112, 151, 0.12);
+  }
+
+  .ubicacion-icono {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .ubicacion-tipo {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rosa-oscuro);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .ubicacion-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: var(--gris-oscuro);
+  }
+
+  .ubicacion-direccion {
+    font-size: 14px;
+    color: var(--gris-medio);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .ubicacion-hora {
+    font-size: 12px;
+    background: linear-gradient(135deg, var(--rosa-oscuro), var(--rosa));
+    color: white;
+    border-radius: 50px;
+    padding: 6px 20px;
+    display: inline-block;
+    letter-spacing: 1px;
+  }
+
+  /* Mapa decorativo */
+  .mapa-decorativo {
+    max-width: 800px;
+    margin: 32px auto 0;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 160, 110, 0.3);
+    background: #e8dfd4;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .mapa-pin {
+    text-align: center;
+    color: var(--rosa-oscuro);
+  }
+
+  .mapa-pin-icon {
+    font-size: 48px;
+    display: block;
+    animation: pinBounce 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pinBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .mapa-pin p {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gris-oscuro);
+    margin-top: 8px;
+  }
+
+  .mapa-pin small {
+    font-size: 13px;
+    color: var(--gris-medio);
+  }
+
+  /* ---- CÓDIGO DE VESTIMENTA ---- */
+  .vestimenta-section {
+    background: linear-gradient(170deg, var(--crema), #fff8f8);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .vestimenta-grid {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 48px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vestimenta-item {
+    text-align: center;
+  }
+
+  .vestimenta-circulo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    border: 3px solid transparent;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .circulo-rosa {
+    background: linear-gradient(135deg, #f9c6d8, #f2a8c4, #e889b4);
+    border-color: var(--rosa-oscuro);
+    box-shadow: 0 0 0 6px rgba(242, 168, 196, 0.2);
+  }
+
+  .circulo-blanco {
+    background: white;
+    border-color: #ddd;
+    box-shadow: 0 0 0 6px rgba(255,255,255,0.5), 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .circulo-negro {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    border-color: #555;
+    box-shadow: 0 0 0 6px rgba(0,0,0,0.1);
+  }
+
+  .vestimenta-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .vestimenta-subtitulo {
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 1px;
+  }
+
+  .vestimenta-nota {
+    max-width: 500px;
+    margin: 40px auto 0;
+    background: white;
+    border: 1px solid rgba(242, 168, 196, 0.4);
+    border-radius: 16px;
+    padding: 24px 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--gris-medio);
+    line-height: 1.7;
+  }
+
+  /* ---- CONFIRMACIÓN ---- */
+  .rsvp-section {
+    background: linear-gradient(135deg, #3b1627, #5c2040);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .rsvp-section .section-label { color: var(--dorado); }
+  .rsvp-section .section-title { color: white; }
+
+  .rsvp-form {
+    max-width: 480px;
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .rsvp-input {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 14px 20px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+
+  .rsvp-input::placeholder { color: rgba(255,255,255,0.4); }
+  .rsvp-input:focus { border-color: var(--rosa); }
+
+  .rsvp-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23f2a8c4' viewBox='0 0 16 16'%3E%3Cpath d='M8 10.5L3 5.5h10L8 10.5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+  }
+
+  .rsvp-select option { background: #3b1627; color: white; }
+
+  .rsvp-btn {
+    background: linear-gradient(135deg, var(--rosa-oscuro), var(--rosa));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 8px;
+  }
+
+  .rsvp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(242, 168, 196, 0.35);
+  }
+
+  .rsvp-btn:active { transform: translateY(0); }
+
+  .rsvp-mensaje {
+    display: none;
+    background: rgba(242, 168, 196, 0.15);
+    border: 1px solid rgba(242, 168, 196, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+    color: var(--rosa);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 16px;
+  }
+
+  /* ---- CIERRE ---- */
+  .cierre-section {
+    padding: 80px 24px 60px;
+    text-align: center;
+    background: var(--crema);
+  }
+
+  .cierre-frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 32px);
+    font-style: italic;
+    color: var(--rosa-oscuro);
+    max-width: 550px;
+    margin: 0 auto 32px;
+    line-height: 1.5;
+  }
+
+  .cierre-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 7vw, 60px);
+    color: var(--gris-oscuro);
+    margin-bottom: 8px;
+  }
+
+  .cierre-nombre span { color: var(--rosa-oscuro); font-style: italic; }
+
+  .cierre-fecha {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--dorado);
+    text-transform: uppercase;
+  }
+
+  .cierre-mariposa {
+    font-size: 48px;
+    margin: 32px 0;
+    animation: rotate3d 4s ease-in-out infinite;
+  }
+
+  @keyframes rotate3d {
+    0%, 100% { transform: rotateY(0deg); }
+    50% { transform: rotateY(180deg); }
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: #0f0508;
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 1px;
+  }
+
+  footer span { color: var(--rosa); opacity: 0.6; }
+
+  /* ---- REVEAL ON SCROLL ---- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 600px) {
+    .bienvenida-card { padding: 40px 24px; }
+    .programa-timeline::before { left: 22px; }
+    .programa-item, .programa-item:nth-child(even) { flex-direction: column; align-items: flex-start; }
+    .programa-dot { align-self: flex-start; margin-left: 0; }
+    .musica-card { padding: 32px 24px; }
+    .vestimenta-grid { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======================== HERO ======================== -->
+<section class="hero" style="max-width:100%; padding: 60px 24px;">
+
+  <!-- Mariposas flotantes decorativas (generadas por JS) -->
+  <div id="mariposas-hero"></div>
+
+  <div class="hero-bg-pattern"></div>
+
+  <p class="hero-badge">✦ Una noche mágica te espera ✦</p>
+
+  <h1 class="hero-nombre">
+    María Guadalupe<br>
+    <span>Vargas Torres</span>
+  </h1>
+
+  <div class="hero-xv">XV</div>
+
+  <p class="hero-anios">A ñ o s</p>
+
+  <div class="hero-fecha-pill">15 · Diciembre · 2026</div>
+
+  <div class="hero-scroll">Desplázate</div>
+</section>
+
+
+<!-- ======================== BIENVENIDA ======================== -->
+<div class="bienvenida-section">
+  <div class="section-label reveal">Mensaje de bienvenida</div>
+  <div class="bienvenida-card reveal">
+    <p class="bienvenida-texto">
+      Con el corazón lleno de alegría y gratitud, tenemos el honor de invitarles a celebrar junto a nosotros el día más especial en la vida de nuestra querida hija. Cada instante de este día ha sido planeado con amor para compartirlo con las personas que más queremos.<br><br>
+      Es para nosotros un privilegio contar con su presencia en esta noche llena de magia, flores y mariposas. ¡Bienvenidos!
+    </p>
+    <div class="divider">🦋</div>
+    <div class="bienvenida-firmas">
+      <div class="firma">
+        <div class="firma-nombre">Raúl Vargas</div>
+        <div class="firma-rol">Papá</div>
+      </div>
+      <div class="firma">
+        <div class="firma-nombre">Concepción Torres</div>
+        <div class="firma-rol">Mamá</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================== FOTOS ======================== -->
+<div class="foto-section">
+  <p class="section-label reveal" style="color:var(--dorado);">La festejada</p>
+  <h2 class="section-title reveal" style="color:white;">Nuestra princesa</h2>
+
+  <div class="fotos-grid reveal">
+    <div class="foto-frame foto-frame-grande">
+      <img
+        src="https://vestidos15.com/wp-content/uploads/2025/01/24-1285x1536-1.jpg"
+        alt="María Guadalupe en su sesión de XV"
+        onerror="this.src='https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80'"
+      />
+    </div>
+    <div class="foto-frame">
+      <img
+        src="https://vestidos15.com/wp-content/uploads/2025/01/20-978x800-1.jpg"
+        alt="María Guadalupe posando"
+        onerror="this.src='https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80'"
+      />
+    </div>
+    <div class="foto-frame">
+      <img
+        src="https://vestidos15.com/wp-content/uploads/2023/11/29-scaled.jpg"
+        alt="Momento especial"
+        onerror="this.src='https://images.unsplash.com/photo-1513151233558-d860c5398176?w=400&q=80'"
+      />
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================== CONTADOR ======================== -->
+<div class="contador-section">
+  <p class="section-label reveal">Cuenta regresiva</p>
+  <h2 class="section-title reveal">¡Faltan solo...</h2>
+
+  <div class="contador-wrap reveal" id="contador">
+    <div class="contador-item">
+      <span class="contador-numero" id="dias">--</span>
+      <span class="contador-label">Días</span>
+    </div>
+    <div class="contador-item">
+      <span class="contador-numero" id="horas">--</span>
+      <span class="contador-label">Horas</span>
+    </div>
+    <div class="contador-item">
+      <span class="contador-numero" id="minutos">--</span>
+      <span class="contador-label">Minutos</span>
+    </div>
+    <div class="contador-item">
+      <span class="contador-numero" id="segundos">--</span>
+      <span class="contador-label">Segundos</span>
+    </div>
+  </div>
+
+  <p class="contador-mensaje reveal" id="contador-msg">...para la noche más mágica de nuestras vidas 🦋</p>
+</div>
+
+
+<!-- ======================== PROGRAMA ======================== -->
+<div class="programa-section">
+  <div style="max-width:900px; margin:0 auto;">
+    <p class="section-label reveal">La noche del 15 de diciembre</p>
+    <h2 class="section-title reveal">Programa del <em>evento</em></h2>
+
+    <div class="programa-timeline reveal">
+
+      <div class="programa-item">
+        <div class="programa-dot">⛪</div>
+        <div class="programa-contenido">
+          <div class="programa-hora">7:00 pm</div>
+          <div class="programa-evento">Santa Misa</div>
+          <div class="programa-lugar">Parroquia local · Durango, Dgo.</div>
+        </div>
+      </div>
+
+      <div class="programa-item">
+        <div class="programa-dot">🌸</div>
+        <div class="programa-contenido">
+          <div class="programa-hora">8:00 pm</div>
+          <div class="programa-evento">Sesión de fotos &amp; recepción</div>
+          <div class="programa-lugar">Salón Las Palmas</div>
+        </div>
+      </div>
+
+      <div class="programa-item">
+        <div class="programa-dot">👑</div>
+        <div class="programa-contenido">
+          <div class="programa-hora">9:00 pm</div>
+          <div class="programa-evento">Entrada de la quinceañera</div>
+          <div class="programa-lugar">Vals de honor con chambelanes</div>
+        </div>
+      </div>
+
+      <div class="programa-item">
+        <div class="programa-dot">🎂</div>
+        <div class="programa-contenido">
+          <div class="programa-hora">9:45 pm</div>
+          <div class="programa-evento">Brindis y pastel</div>
+          <div class="programa-lugar">Palabras de papá y mamá</div>
+        </div>
+      </div>
+
+      <div class="programa-item">
+        <div class="programa-dot">🎶</div>
+        <div class="programa-contenido">
+          <div class="programa-hora">10:00 pm</div>
+          <div class="programa-evento">Baile &amp; convivio</div>
+          <div class="programa-lugar">En vivo: El Sello de Durango</div>
+        </div>
+      </div>
+
+      <div class="programa-item">
+        <div class="programa-dot">🌙</div>
+        <div class="programa-contenido">
+          <div class="programa-hora">1:00 am</div>
+          <div class="programa-evento">Cierre de la fiesta</div>
+          <div class="programa-lugar">¡Gracias por compartir este sueño!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================== MÚSICA ======================== -->
+<div class="musica-section">
+  <p class="section-label reveal">Entretenimiento en vivo</p>
+  <h2 class="section-title reveal">La música de la noche</h2>
+
+  <div class="musica-card reveal">
+    <img
+      class="musica-foto"
+      src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80"
+      alt="Grupo musical en vivo"
+      onerror="this.src='https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80'"
+    />
+
+    <div class="musica-notas-animadas">♪ ♫ ♪ ♫ ♪</div>
+
+    <div class="musica-nombre">
+      Grupo Versátil
+      <span>"El Sello de Durango"</span>
+    </div>
+
+    <div class="musica-badges">
+      <span class="badge">Norteño</span>
+      <span class="badge">Banda</span>
+      <span class="badge">Cumbias</span>
+      <span class="badge">Romántico</span>
+      <span class="badge">Durango, Dgo.</span>
+    </div>
+
+    <p class="musica-nota">
+      Pondrán a bailar a toda la familia con el mejor sabor duranguense. ¡Una noche que no olvidarás!
+    </p>
+  </div>
+</div>
+
+
+<!-- ======================== UBICACIÓN ======================== -->
+<div class="ubicacion-section">
+  <p class="section-label reveal">¿Cómo llegar?</p>
+  <h2 class="section-title reveal">Sede del <em>evento</em></h2>
+
+  <div class="ubicacion-cards reveal">
+    <div class="ubicacion-card">
+      <div class="ubicacion-icono">⛪</div>
+      <div class="ubicacion-tipo">Ceremonia religiosa</div>
+      <div class="ubicacion-nombre">Misa de acción de gracias</div>
+      <div class="ubicacion-direccion">Parroquia local<br>Durango, Durango</div>
+      <div class="ubicacion-hora">7:00 pm</div>
+    </div>
+    <div class="ubicacion-card">
+      <div class="ubicacion-icono">🌹</div>
+      <div class="ubicacion-tipo">Recepción y baile</div>
+      <div class="ubicacion-nombre">Salón Las Palmas</div>
+      <div class="ubicacion-direccion">Av. Siempre Viva 412 Nte.<br>Fracc. del Valle<br>Durango, Durango, México</div>
+      <div class="ubicacion-hora">9:00 pm</div>
+    </div>
+  </div>
+
+  <div class="mapa-decorativo reveal">
+    <div class="mapa-pin">
+      <span class="mapa-pin-icon">📍</span>
+      <p>Salón Las Palmas</p>
+      <small>Av. Siempre Viva 412 Nte. · Fracc. del Valle · Durango, Dgo.</small>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================== VESTIMENTA ======================== -->
+<div class="vestimenta-section">
+  <p class="section-label reveal">Para esa noche</p>
+  <h2 class="section-title reveal">Código de <em>vestimenta</em></h2>
+
+  <div class="vestimenta-grid reveal">
+    <div class="vestimenta-item">
+      <div class="vestimenta-circulo circulo-blanco">
+        <svg width="40" height="40" viewBox="0 0 40 40"><ellipse cx="20" cy="20" rx="14" ry="16" fill="white" stroke="#ddd" stroke-width="1.5"/></svg>
+      </div>
+      <div class="vestimenta-titulo">Blanco</div>
+      <div class="vestimenta-subtitulo">Color principal invitados</div>
+    </div>
+    <div class="vestimenta-item">
+      <div class="vestimenta-circulo circulo-negro">
+        <svg width="40" height="40" viewBox="0 0 40 40"><ellipse cx="20" cy="20" rx="14" ry="16" fill="#1a1a1a"/></svg>
+      </div>
+      <div class="vestimenta-titulo">Negro</div>
+      <div class="vestimenta-subtitulo">Complemento elegante</div>
+    </div>
+    <div class="vestimenta-item">
+      <div class="vestimenta-circulo circulo-rosa">
+        <svg width="40" height="40" viewBox="0 0 40 40"><ellipse cx="20" cy="20" rx="14" ry="16" fill="#f2a8c4"/></svg>
+      </div>
+      <div class="vestimenta-titulo">Rosa Pastel</div>
+      <div class="vestimenta-subtitulo">Exclusivo quinceañera</div>
+    </div>
+  </div>
+
+  <div class="vestimenta-nota reveal">
+    🦋 Los invitados deberán vestir de <strong>blanco</strong> con detalles en <strong>negro</strong>.<br>
+    El rosa pastel es el color exclusivo de nuestra festejada.<br>
+    ¡Ayúdanos a crear una noche perfecta! 🌸
+  </div>
+</div>
+
+
+<!-- ======================== CONFIRMACIÓN ======================== -->
+<div class="rsvp-section">
+  <p class="section-label reveal">No faltes</p>
+  <h2 class="section-title reveal">Confirma tu <em style="color:var(--rosa);">asistencia</em></h2>
+
+  <div class="rsvp-form reveal">
+    <input type="text" class="rsvp-input" id="rsvp-nombre" placeholder="Tu nombre completo">
+    <input type="text" class="rsvp-input" id="rsvp-tel" placeholder="WhatsApp / teléfono">
+    <select class="rsvp-input rsvp-select" id="rsvp-asistentes">
+      <option value="">¿Cuántos asistirán?</option>
+      <option>1 persona</option>
+      <option>2 personas</option>
+      <option>3 personas</option>
+      <option>4 personas</option>
+      <option>5 o más personas</option>
+    </select>
+    <select class="rsvp-input rsvp-select" id="rsvp-confirma">
+      <option value="">¿Confirmas asistencia?</option>
+      <option value="si">✓ ¡Sí asistiré con gusto!</option>
+      <option value="no">✗ Lamentablemente no podré ir</option>
+    </select>
+    <button class="rsvp-btn" onclick="confirmarRsvp()">Confirmar asistencia ✦</button>
+    <div class="rsvp-mensaje" id="rsvp-mensaje">
+      🦋 ¡Gracias! Tu confirmación ha sido recibida. ¡Te esperamos con mucho cariño!
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================== CIERRE ======================== -->
+<div class="cierre-section">
+  <div class="cierre-mariposa reveal">🦋</div>
+
+  <p class="cierre-frase reveal">
+    "Que cada mariposa que vuele esa noche lleve consigo un deseo de felicidad para ti, nuestra niña hermosa."
+  </p>
+
+  <div class="cierre-nombre reveal">
+    María <span>Guadalupe</span>
+  </div>
+
+  <p class="cierre-fecha reveal">15 · XII · MMXXVI</p>
+
+  <div class="divider reveal" style="margin-top:48px;">🌸</div>
+</div>
+
+
+<!-- ======================== FOOTER ======================== -->
+<footer>
+  <p>Diseñado con 💕 para <span>María Guadalupe Vargas Torres</span> · XV Años 2026</p>
+  <p style="margin-top:8px; font-size:10px; opacity:0.5;">Invitación digital interactiva ·Angel Trejo · Durango, México</p>
+</footer>
+
+
+<script>
+// ---- MARIPOSAS FLOTANTES ----
+function crearMariposas() {
+  const container = document.getElementById('mariposas-hero');
+  const colores = ['#f2a8c4','#fde8f0','#c9a96e','#e889b4','rgba(255,255,255,0.7)'];
+  for (let i = 0; i < 18; i++) {
+    const b = document.createElement('div');
+    b.className = 'butterfly';
+    const size = 20 + Math.random() * 30;
+    const color = colores[Math.floor(Math.random() * colores.length)];
+    const tx = (Math.random() - 0.5) * 600;
+    const ty = -(200 + Math.random() * 400);
+    const rot = (Math.random() - 0.5) * 60 + 'deg';
+    const delay = Math.random() * 8;
+    const dur = 6 + Math.random() * 8;
+    b.style.cssText = `
+      left: ${10 + Math.random() * 80}%;
+      top: ${20 + Math.random() * 70}%;
+      --tx: ${tx}px; --ty: ${ty}px; --rot: ${rot};
+      animation-duration: ${dur}s;
+      animation-delay: ${delay}s;
+    `;
+    b.innerHTML = `<svg viewBox="0 0 60 40" width="${size}" height="${size * 0.66}">
+      <ellipse cx="18" cy="16" rx="15" ry="12" fill="${color}" opacity="0.85" transform="rotate(-20 18 16)"/>
+      <ellipse cx="42" cy="16" rx="15" ry="12" fill="${color}" opacity="0.85" transform="rotate(20 42 16)"/>
+      <ellipse cx="16" cy="28" rx="10" ry="7" fill="${color}" opacity="0.6" transform="rotate(-30 16 28)"/>
+      <ellipse cx="44" cy="28" rx="10" ry="7" fill="${color}" opacity="0.6" transform="rotate(30 44 28)"/>
+      <line x1="30" y1="4" x2="30" y2="36" stroke="${color}" stroke-width="1.5" opacity="0.8"/>
+    </svg>`;
+    container.appendChild(b);
+  }
+}
+
+// ---- CONTADOR REGRESIVO ----
+function actualizarContador() {
+  const evento = new Date('2026-12-15T19:00:00');
+  const ahora = new Date();
+  const diff = evento - ahora;
+
+  if (diff <= 0) {
+    document.getElementById('contador-msg').textContent = '¡Hoy es el gran día! 🦋🎉';
+    ['dias','horas','minutos','segundos'].forEach(id => {
+      document.getElementById(id).textContent = '00';
+    });
+    return;
+  }
+
+  const dias    = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const horas   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos= Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('dias').textContent     = String(dias).padStart(2,'0');
+  document.getElementById('horas').textContent    = String(horas).padStart(2,'0');
+  document.getElementById('minutos').textContent  = String(minutos).padStart(2,'0');
+  document.getElementById('segundos').textContent = String(segundos).padStart(2,'0');
+}
+
+// ---- RSVP ----
+function confirmarRsvp() {
+  const nombre    = document.getElementById('rsvp-nombre').value.trim();
+  const confirma  = document.getElementById('rsvp-confirma').value;
+  const asistentes= document.getElementById('rsvp-asistentes').value;
+
+  if (!nombre || !confirma || !asistentes) {
+    alert('Por favor completa todos los campos 🌸');
+    return;
+  }
+
+  const msg = document.getElementById('rsvp-mensaje');
+  if (confirma === 'si') {
+    msg.innerHTML = `🦋 ¡Gracias, <strong>${nombre}</strong>! Tu confirmación de <strong>${asistentes}</strong> ha sido recibida. ¡Te esperamos con mucho cariño el 15 de Diciembre! 🌸`;
+  } else {
+    msg.innerHTML = `💐 Gracias por avisarnos, <strong>${nombre}</strong>. Lamentamos que no puedas acompañarnos, pero te enviamos un abrazo enorme con todo el cariño.`;
+  }
+  msg.style.display = 'block';
+  msg.style.color = confirma === 'si' ? 'var(--rosa)' : 'rgba(255,255,255,0.7)';
+}
+
+// ---- REVEAL ON SCROLL ----
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+reveals.forEach(el => observer.observe(el));
+
+// ---- INIT ----
+crearMariposas();
+actualizarContador();
+setInterval(actualizarContador, 1000);
+</script>
+</body>
+</html>

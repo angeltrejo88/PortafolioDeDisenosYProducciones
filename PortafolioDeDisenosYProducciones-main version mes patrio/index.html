@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AT Design Studio · Portafolio Creativo</title>
+<meta name="description" content="Invitaciones digitales interactivas, flyers, páginas web y edición de video en Durango, México. Diseños 100% personalizados con entrega en 1 a 3 días.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="https://i.ibb.co/23Mg6CwR/Firma-3-1.png">
+<link rel="apple-touch-icon" href="https://i.ibb.co/23Mg6CwR/Firma-3-1.png">
+
+<!-- Open Graph / WhatsApp / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AT Design Studio · Invitaciones Digitales, Flyers y Diseño Web">
+<meta property="og:description" content="Invitaciones digitales interactivas, flyers, páginas web y edición de video en Durango, México. Diseños 100% personalizados con entrega en 1 a 3 días.">
+<meta property="og:image" content="https://i.ibb.co/23Mg6CwR/Firma-3-1.png">
+<meta property="og:url" content="https://atdesignstudio.com/">
+<meta property="og:locale" content="es_MX">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AT Design Studio · Invitaciones Digitales, Flyers y Diseño Web">
+<meta name="twitter:description" content="Invitaciones digitales interactivas, flyers, páginas web y edición de video en Durango, México.">
+<meta name="twitter:image" content="https://i.ibb.co/23Mg6CwR/Firma-3-1.png">
+
+<!-- Preconnect para acelerar la carga de Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<link href="style.css" rel="stylesheet">
+
+<!-- EDITAR: INICIO PATRIAS (CSS) - borrar este <link> también al quitar el módulo -->
+<link href="patrias.css" rel="stylesheet">
+<!-- EDITAR: FIN PATRIAS (CSS) -->
+
+<!-- Google Analytics (GA4) — reemplaza G-XXXXXXXXXX con tu ID real de Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+</head>
+<body>
+
+<!-- Cursor personalizado -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- EDITAR: INICIO PATRIAS (borrar todo este bloque después del 16 de septiembre) -->
+<!-- Franja superior tricolor con el mensaje — separada del navbar, nunca se cruza con los links -->
+<div class="patrias-ribbon" id="patriasRibbon">🇲🇽 Felices Fiestas Patrias 🇲🇽</div>
+<!-- Confeti + fuegos artificiales tricolor de fondo -->
+<canvas class="patrias-canvas" id="patriasCanvas" aria-hidden="true"></canvas>
+<!-- EDITAR: FIN PATRIAS (HTML) -->
+
+<!-- ============ NAVBAR ============ -->
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo"><img src="https://i.ibb.co/23Mg6CwR/Firma-3-1.png" alt="AT Design Studio" onerror="this.style.display='none'">
+</a>
+
+
+
+  <div class="nav-links">
+    <a href="#portafolio" class="nav-link">Portafolio</a>
+    <a href="#servicios" class="nav-link">Servicios</a>
+    <a href="#contacto" class="nav-link">Contacto</a>
+    <a href="https://wa.me/526182530067?text=Hola%20Angel!%20Vi%20tu%20portafolio%20y%20me%20interesa%20un%20proyecto" target="_blank" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMobileNav()" role="button" tabindex="0" aria-label="Abrir menú de navegación" aria-expanded="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleMobileNav()}">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- EDITAR: INICIO BANDERINES (borrar al quitar el módulo) -->
+  <div class="patrias-banderines" id="patriasBanderines" aria-hidden="true">
+    <div class="banderines-cuerda" id="patriasCuerda"></div>
+  </div>
+  <!-- EDITAR: FIN BANDERINES -->
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#inicio" onclick="toggleMobileNav()">Inicio</a>
+  <a href="#portafolio" onclick="toggleMobileNav()">Portafolio</a>
+  <a href="#servicios" onclick="toggleMobileNav()">Servicios</a>
+  <a href="#contacto" onclick="toggleMobileNav()">Contacto</a>
+</div>
+
+
+<!-- ============ HERO ============ -->
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+<br>
+  <div class="hero-tag">✨ Especialistas en Invitaciones Web y en video</div>
+
+  <h1 class="hero-title">
+    Invitaciones que<br><span class="accent">cobran vida</span> y<br>diseño digital
+  </h1>
+
+  <p class="hero-sub">
+    Diseñamos invitaciones web e interactivas premium para que sorprendas a tus invitados en su celular, además de flyers publicitarios, páginas web y edición de video profesional para potenciar tu marca.
+  </p>
+
+  <div class="hero-btns">
+    <a href="#portafolio" class="btn-primary">
+      <span>Ver portafolio</span> <span>→</span>
+    </a>
+    <a href="https://wa.me/526182530067?text=Hola%20Angel!%20Quiero%20cotizar%20un%20proyecto" target="_blank" class="btn-secondary">
+      Cotizar proyecto
+    </a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Personalizado</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1-3</div>
+      <div class="stat-label">Días de entrega</div>
+      <div class="stat-label">(Dependiendo del proyecto)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" >∞</div>
+      <div class="stat-label">Creatividad</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ PROMO BANNER ============ -->
+<div class="promo-section">
+  <div class="promo-track" id="promo-track">
+    <!-- se duplica por JS para loop infinito -->
+    <div class="promo-card" onclick="openLightbox('promo1')">
+      <img src="https://i.ibb.co/7JvD0K4N/Chat-GPT-Image-18-ago-2026-09-36-08-p-m-1.png" alt="Paquete Visualiza tu cancion" fetchpriority="high" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
+
+
+      <div class="promo-overlay"><span class="promo-label">📢 PAQUETE VISUALIZER DE TU CANCION A TAN SOLO $99 X CANCION + 1 caratula.</span></div>
+    </div>
+    <div class="promo-card" onclick="openLightbox('promo2')">
+      <img src="https://i.ibb.co/DfxpW2FH/Chat-GPT-Image-2-jun-2026-10-04-36-p-m.png" alt="Invitaciones Digitales" fetchpriority="high" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
+
+      <div class="promo-overlay"><span class="promo-label">🎉 INVITACIONES DIGITALES DESDE $249</span></div>
+    </div>
+
+    <div class="promo-card" onclick="openLightbox('promo3')">
+      <img src="https://i.ibb.co/NgJqp5DW/Chat-GPT-Image-5-may-2026-08-29-55-p-m.png" alt="Flayers" fetchpriority="high" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
+
+
+      <div class="promo-overlay"><span class="promo-label">✨ Flayers Personalizados a tan solo $99</span></div>
+    </div>
+
+    <div class="promo-card" onclick="window.open('https://wa.me/526182530067?text=Quiero+info+de+promociones','_blank')">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#e8175d22,#ff6b3522);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+        <div style="font-size:42px;">🎯</div>
+        <div style="font-family:Syne,sans-serif;font-weight:800;font-size:18px;color:white;text-align:center;padding:0 20px;">¿Tienes un proyecto en mente?</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);">Pregunta sin compromiso →</div>
+      </div>
+      <div class="promo-overlay"><span class="promo-label">💬 CONSULTA GRATIS</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============ WEB INVITATION FEATURES ============ -->
+<div class="features-section-wrapper">
+  <section class="invitation-features reveal">
+    <div class="section-header">
+      <div class="section-eyebrow">¿Por qué elegir una invitación web?</div>
+      <h2 class="section-title">El formato del futuro para tu evento</h2>
+      <p class="section-desc">Olvídate del papel. Nuestras invitaciones interactivas ofrecen una experiencia premium para tus invitados directamente en su celular con herramientas integradas.</p>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-box">
+        <div class="feature-icon">⏳</div>
+        <h3>Cuenta Regresiva</h3>
+        <p>Genera expectativa mostrando los días, horas y minutos restantes para el gran día.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">📍</div>
+        <h3>Ubicación GPS</h3>
+        <p>Tus invitados sabrán cómo llegar conectando directamente con Google Maps y Waze.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">✉️</div>
+        <h3>Confirmación RSVP</h3>
+        <p>Recibe la lista de tus invitados confirmados directamente en tu WhatsApp organizada y sin rodeos.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">🎵</div>
+        <h3>Música de Fondo</h3>
+        <p>Ambientación musical personalizada con su canción favorita que se reproduce al abrir la invitación.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">📸</div>
+        <h3>Galería de Fotos</h3>
+        <p>Comparte tus fotos favoritas o de tu sesión de fotos previa en un elegante carrusel integrado.</p>
+      </div>
+      <div class="feature-box">
+        <div class="feature-icon">🎫</div>
+        <h3>Pases Digitales</h3>
+        <p>Organiza el acceso de tus invitados enviándoles pases individuales con boletos asignados.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ============ PORTAFOLIO ============ -->
+<div style="background:var(--oscuro);padding:100px 0">
+<div class="section" id="portafolio" style="padding-top:0;padding-bottom:0">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Mi trabajo</div>
+    <h2 class="section-title">Portafolio Creativo</h2>
+    <p class="section-desc">Explora mis proyectos por categoría. Haz clic en cualquier tarjeta para ver el detalle completo.</p><br>
+    <p><span style="font-family: 'Arial', sans-serif; font-size: 14px; color: var(--gris-claro); opacity: 0.85;">⚠️ ATENCIÓN: SE CAMBIARON LOS DATOS REALES DE ALGUNAS INVITACIONES ACTIVAS PARA PROTECCIÓN DE LA PRIVACIDAD DE LOS USUARIOS</span></p>
+  </div>
+
+  <!-- Filtros de categoría -->
+  <div class="cat-nav reveal">
+    <button class="cat-btn active" onclick="filterCat('todo', this)">✦ Todo</button>
+    <button class="cat-btn" onclick="filterCat('invitaciones', this)">🎉 Invitaciones Digitales</button>
+    <button class="cat-btn" onclick="filterCat('flyers', this)">📢 Flyers</button>
+    <button class="cat-btn" onclick="filterCat('web', this)">🌐 Páginas Web</button>
+    <button class="cat-btn" onclick="filterCat('fotos', this)">📷 Edición de Fotos</button>
+    <button class="cat-btn" onclick="filterCat('video', this)">🎬 Edición de Video</button>
+    <button class="cat-btn" onclick="filterCat('video', this)">🎵 Visualizer</button>
+  </div>
+
+  <!-- Grid Dinámico -->
+  <div class="portfolio-grid reveal" id="portfolio-grid">
+    <!-- Se carga dinámicamente con JavaScript desde script.js -->
+  </div><!-- /portfolio-grid -->
+
+  <!-- Botón para ir cargando más proyectos por lotes en la vista "Todo" -->
+  <div class="load-more-wrap" id="load-more-wrap" style="display:none">
+    <button class="btn-secondary" onclick="loadMoreProjects()">Cargar más proyectos ↓</button>
+  </div>
+</div>
+</div><!-- /bg oscuro -->
+
+
+<!-- ============ SERVICIOS ============ -->
+<div class="section" id="servicios">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">¿Qué ofrezco?</div>
+    <h2 class="section-title">Servicios</h2>
+    <p class="section-desc">Cada proyecto es único. Aquí van los servicios que puedo crear para ti.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <span class="service-icon">🎉</span>
+      <div class="service-name">Invitaciones Digitales</div>
+      <div class="service-desc">Digitales e interactivas web y en video, para XV años, cumpleaños, bodas, baby shower y más. Con RSVP, contador y animaciones.</div>
+      <div class="service-price">Desde $249</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📢</span>
+      <div class="service-name">Flyers Publicitarios</div>
+      <div class="service-desc">Diseños modernos y llamativos para redes sociales, impresión o campañas digitales. Adaptados a todos los formatos.</div>
+      <div class="service-price">Desde $99</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌐</span>
+      <div class="service-name">Páginas Web</div>
+      <div class="service-desc">Landing pages, portafolios y sitios para negocios. Diseño responsivo, rápido y moderno sin código difícil.</div>
+      <div class="service-price">Desde $599</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📷</span>
+      <div class="service-name">Edición de Fotos</div>
+      <div class="service-desc">Retoque, composición, fondos, colores y montajes. Incluye diseño de flyers como subcategoría.</div>
+      <div class="service-price">Desde $79</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎬</span>
+      <div class="service-name">Edición de Video</div>
+      <div class="service-desc">Reels, TikToks, videos publicitarios, memorias de eventos. Visualizer de música y con efectos.</div>
+      <div class="service-price">Desde $199</div>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎵</span>
+      <div class="service-name">Visualizer</div>
+      <div class="service-desc">Estrategia visual completa: Visualizer + caratula de la cancion.</div>
+      <div class="service-price">Desde $99 x cancion</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============ TESTIMONIOS ============ -->
+<!-- EDITAR: pon el link de cada captura de WhatsApp/reseña en el src="" vacío de cada .testimonial-shot -->
+<div class="section" id="testimonios">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Lo que dicen mis clientes</div>
+    <h2 class="section-title">Confianza que se nota</h2>
+    <p class="section-desc">Capturas reales de conversaciones y reseñas de quienes ya confiaron en su proyecto.</p>
+  </div>
+  <div class="testimonials-carousel-wrap reveal">
+    <div class="testimonials-track" id="testimonials-track">
+      <div class="testimonial-shot">
+        <img src="reco 1.png" alt="Captura de reseña de cliente 1" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 2.png" alt="Captura de reseña de cliente 2" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 3.png" alt="Captura de reseña de cliente 3" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 4.png" alt="Captura de reseña de cliente 4" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 5.png" alt="Captura de reseña de cliente 5" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 6.png" alt="Captura de reseña de cliente 6" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+      <div class="testimonial-shot">
+        <img src="reco 7.png" alt="Captura de reseña de cliente 6" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============ CTA ============ -->
+<div class="cta-section reveal" id="contacto">
+  <div class="section-eyebrow" style="margin-bottom:16px">¿Listo para empezar?</div>
+  <h2 class="cta-title">Haz que tu proyecto<br>cobre vida hoy</h2>
+  <p class="cta-desc">Entrega en 1 a 3 días hábiles. Diseños 100% personalizados. Compatible con todos los dispositivos.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/526182530067?text=Hola%20Angel!%20Vi%20tu%20portafolio%20y%20quiero%20cotizar%20un%20proyecto" target="_blank" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Escribir por WhatsApp
+    </a>
+    <a href="https://www.facebook.com/ATDesignStudioDGO" target="_blank" class="btn-secondary">Ver Facebook</a>
+  </div>
+</div>
+
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="https://i.ibb.co/23Mg6CwR/Firma-3-1.png" alt="AT Design Studio" onerror="this.style.display='none'">
+      <p>Diseño creativo digital en Durango, México. Invitaciones, flyers, webs, video y campañas publicitarias.</p>
+    </div>
+    <div class="footer-social">
+      <div class="social-title">Sígueme</div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/ATDesignStudioDGO" target="_blank" class="social-link social-fb" title="Facebook" aria-label="Facebook">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        
+      </div>
+<div class="social-title">Contactame</div>
+      <a href="https://wa.me/526182530067?text=Hola%20Angel!%20Vi%20tu%20portafolio" target="_blank" class="social-link social-wa" title="WhatsApp" aria-label="WhatsApp">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      
+    </div>
+    <div class="footer-right">
+      <div class="footer-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="https://wa.me/526182530067" target="_blank">WhatsApp</a>
+        <a href="https://www.facebook.com/ATDesignStudioDGO" target="_blank">Facebook</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© <span id="footer-year"></span> <span>AT Design Studio</span> </div><div><br> Angel Trejo <br> Todos los derechos reservados</div>
+    <div class="footer-year">Durango, Dgo. · México 🇲🇽</div>
+  </div>
+</footer>
+
+
+<!-- ============ Boton Flotante: subir arriba ============ -->
+<button id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ir arriba" aria-label="Volver arriba">
+  ↑
+</button>
+
+<!-- ============ Boton Flotante: WhatsApp persistente ============ -->
+<a id="btn-whatsapp" href="https://wa.me/526182530067?text=Hola%20Angel!%20Vi%20tu%20portafolio%20y%20me%20interesa%20un%20proyecto" target="_blank" title="Escríbeme por WhatsApp" aria-label="Escríbeme por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Cerrar">✕</button>
+  <div class="lb-content" id="lb-content"></div>
+</div>
+
+
+<script src="script.js"></script>
+<!-- EDITAR: INICIO PATRIAS (JS) - borrar este <script> también al quitar el módulo -->
+<script src="patrias.js"></script>
+<!-- EDITAR: FIN PATRIAS (JS) -->
+
+
+</body>
+</html>
