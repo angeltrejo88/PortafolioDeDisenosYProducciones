@@ -5,6 +5,49 @@ document.getElementById('footer-year').textContent = new Date().getFullYear();
 const IMG_FALLBACK = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22250%22%3E%3Crect width=%22400%22 height=%22250%22 fill=%22%2316161f%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%238a8a9a%22 font-family=%22sans-serif%22 font-size=%2216%22 text-anchor=%22middle%22 dy=%22.3em%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';
 
 // ==========================================
+// 🎃 SECCIÓN DE TEMPORADA (EDITAR AQUÍ CADA TEMPORADA)
+// ==========================================
+// Cambia estos datos para renovar la sección según la época del año
+// (Halloween, Navidad, San Valentín, etc). Si activa:false, la sección
+// completa se oculta automáticamente.
+const TEMPORADA_CONFIG = {
+  activa: true,
+  emoji: '🎃',
+  etiqueta: 'Edición especial de temporada',
+  titulo: 'Invitación Interactiva de Halloween',
+  descripcion: 'Una invitación web con animaciones y ambientación 100% tenebrosa para tu fiesta de Halloween.',
+  // EDITAR: TEMPORADA — pega aquí el link de tu imagen cuando la subas
+  imagen: 'https://i.ibb.co/QvRX1W3V/Whats-App-Image-2026-08-25-at-6-07-24-PM.jpg',
+  // EDITAR: TEMPORADA — pega aquí el link de la demo o del chat de WhatsApp
+  link: 'https://invitacion-hallowen.vercel.app/',
+  textoBoton: 'Ver invitación de Halloween'
+};
+
+function renderTemporada() {
+  const wrap = document.getElementById('temporada-section');
+  if (!wrap) return;
+  if (!TEMPORADA_CONFIG.activa) {
+    wrap.style.display = 'none';
+    return;
+  }
+  wrap.innerHTML = `
+    <div class="temporada-card reveal">
+      <div class="temporada-img">
+        <img src="${TEMPORADA_CONFIG.imagen}" alt="${TEMPORADA_CONFIG.titulo}" loading="lazy" onerror="this.onerror=null;this.src='${IMG_FALLBACK}'">
+      </div>
+      <div class="temporada-info">
+        <div class="temporada-eyebrow">${TEMPORADA_CONFIG.emoji} ${TEMPORADA_CONFIG.etiqueta}</div>
+        <h2 class="temporada-title">${TEMPORADA_CONFIG.titulo}</h2>
+        <p class="temporada-desc">${TEMPORADA_CONFIG.descripcion}</p>
+        <a href="${TEMPORADA_CONFIG.link}" target="_blank" class="btn-primary">
+          <span>${TEMPORADA_CONFIG.textoBoton}</span> <span>→</span>
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+// ==========================================
 // 🌟 BASE DE DATOS DE PROYECTOS (PORTAFOLIO)
 // ==========================================
 // ¡Añadir un nuevo ejemplo aquí es súper fácil!
@@ -172,27 +215,27 @@ const portfolioProjects = [
   {
     title: 'Flyer · Paquete Visualizer',
     cardTitle: 'Paquete Visualizer + caratula',
-    desc: 'Creacion de Visualizer dinamico para tu cancion, incluye la caratula de la cancion, dirigido para youtube o tiktok.',
-    cardDesc: 'Diseño Visualizer + caratula. $99 pesos x cancion.',
+    desc: 'Creacion de Visualizer dinamicos para tu disco, incluye la caratula del disco, dirigido para youtube o tiktok.',
+    cardDesc: 'Diseño 7 Visualizer + caratula. $300 pesos.',
     cat: 'video',
     badge: 'Edición de Video',
     isNew: false,
     tags: ['Edición', 'Video'],
     lightboxTags: ['Video', 'Edición', 'Visualizer', 'Publicidad'],
-    img: 'https://i.ibb.co/7JvD0K4N/Chat-GPT-Image-18-ago-2026-09-36-08-p-m-1.png',
+    img: 'https://i.ibb.co/PsRMkfLv/Whats-App-Image-2026-08-25-at-4-06-38-PM.png',
     type: 'image'
   },
   {
     title: 'Flyer · Invitaciones Digitales',
     cardTitle: 'Promo Invitaciones Digitales',
-    desc: 'Flyer promocional para servicio de invitaciones digitales e interactivas. Promoción de primavera con precio especial desde $249 pesos.',
-    cardDesc: 'Flyer de temporada para invitaciones digitales e interactivas para fiestas.',
+    desc: 'Flyer promocional para servicio de invitaciones digitales e interactivas. Promoción de invitaciones web desde $249 pesos.',
+    cardDesc: 'Flyer para invitaciones digitales e interactivas para fiestas.',
     cat: 'flyers',
     badge: 'Flyer',
     isNew: false,
     tags: ['Eventos', 'Promo'],
     lightboxTags: ['Canva', 'Eventos', 'Promoción'],
-    img: 'https://i.ibb.co/5gCmqtFX/Chat-GPT-Image-4-may-2026-07-05-08-p-m.png',
+    img: 'https://i.ibb.co/sdc7TMnk/Chat-GPT-Image-18-ago-2026-09-33-56-p-m-1.png',
     type: 'image'
   },
   {
@@ -352,6 +395,7 @@ function loadMoreProjects() {
 
 // Inicializar el renderizado del portafolio
 renderPortfolio();
+renderTemporada();
 
 // ---- CURSOR PERSONALIZADO (DESACTIVADO EN MÓVILES) ----
 const cursor = document.getElementById('cursor');
@@ -467,7 +511,8 @@ function filterCat(cat, btnEl) {
 }
 
 // ---- LIGHTBOX PROMOS (SLIDER SUPERIOR) ----
-const promo1Src = 'https://i.ibb.co/7JvD0K4N/Chat-GPT-Image-18-ago-2026-09-36-08-p-m-1.png';
+// EDITAR: PROMO VISUALIZER — pega aquí el link de tu nueva imagen cuando la subas
+const promo1Src = 'https://i.ibb.co/PsRMkfLv/Whats-App-Image-2026-08-25-at-4-06-38-PM.png';
 const promo2Src = 'https://i.ibb.co/5gCmqtFX/Chat-GPT-Image-4-may-2026-07-05-08-p-m.png';
 const promo3Src = 'https://i.ibb.co/NgJqp5DW/Chat-GPT-Image-5-may-2026-08-29-55-p-m.png';
 
@@ -478,10 +523,10 @@ function openLightbox(id) {
 
   if (id === 'promo1') {
     content.innerHTML = `
-      <img class="lb-img" src="${promo1Src}" alt="Paquete Visualizer de tu cancion" onerror="this.onerror=null;this.src='${IMG_FALLBACK}'">
-      <div class="lb-title">Paquete Visualizer de tu cancion para redes sociales</div>
-      <div class="lb-desc">1 imagen de caratula + 1 video. Todo por $99 pesos. Diseños enfocados en que se vea lo que tu cantas.</div>
-      <a class="lb-link" href="https://wa.me/526182530067?text=Hola+Angel!+Me+interesa+el+Paquete+Visualizer+de+tu+cancion" target="_blank">💬 Quiero este paquete</a>`;
+      <img class="lb-img" src="${promo1Src}" alt="Paquete 7 Visualizers + caratula" onerror="this.onerror=null;this.src='${IMG_FALLBACK}'">
+      <div class="lb-title">Paquete de 7 Visualizers + 1 carátula para tu disco</div>
+      <div class="lb-desc">7 videos Visualizer + 1 imagen de carátula para tu disco. Todo por $300 pesos. Diseños enfocados en que se vea lo que tu cantas.</div>
+      <a class="lb-link" href="https://wa.me/526182530067?text=Hola+Angel!+Me+interesa+el+Paquete+de+7+Visualizers+mas+caratula" target="_blank">💬 Quiero este paquete</a>`;
   } else if (id === 'promo2') {
     content.innerHTML = `
       <img class="lb-img" src="${promo2Src}" alt="Invitaciones Digitales" onerror="this.onerror=null;this.src='${IMG_FALLBACK}'">
@@ -543,17 +588,15 @@ function openProject(p) {
   const isDemoWeb = !tiktokId && !youtubeId && p.url && p.url !== '#' && (p.badge === 'Invitación Web' || p.cat === 'web');
 
   if (tiktokId) {
-    // Preview inmersivo del TikTok directo dentro del mockup de celular
+    // El iframe de TikTok no cargaba de forma confiable, así que se usa una
+    // vista previa en imagen que lleva directo al video real en TikTok.
     mediaHTML = `
-      <div class="phone-mockup">
-        <div class="phone-screen">
-          <div class="phone-loader" id="video-loader">
-            <div class="spinner"></div>
-            <div style="margin-top:12px;font-size:13px;color:var(--gris-claro);">Cargando video...</div>
-          </div>
-          <iframe class="phone-iframe" src="https://www.tiktok.com/embed/v2/${tiktokId}" allow="autoplay; encrypted-media; fullscreen" allowfullscreen onload="document.getElementById('video-loader').style.display='none'"></iframe>
+      <a href="${p.url}" target="_blank" style="position:relative;display:inline-block;max-width:100%;max-height:45vh;margin-bottom:20px;border-radius:12px;overflow:hidden;">
+        <img class="lb-img" src="${p.img || IMG_FALLBACK}" alt="${p.title}" style="margin-bottom:0;display:block;" onerror="this.onerror=null;this.src='${IMG_FALLBACK}'">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;background:rgba(232,23,93,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(232,23,93,0.6);pointer-events:none;">
+          <span style="font-size:28px;margin-left:4px;color:white;">▶</span>
         </div>
-      </div>
+      </a>
     `;
   } else if (youtubeId) {
     // Preview inmersivo del video de YouTube (Visualizer, etc.) en 16:9

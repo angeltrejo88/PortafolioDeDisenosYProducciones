@@ -69,11 +69,3 @@
   .patrias-ribbon{height:24px; font-size:10.5px; letter-spacing:.3px}
 }
 
-/* ---- Canvas de confeti + fuegos artificiales ---- */
-.patrias-canvas{
-  position:fixed;
-  top:0; left:0;
-  width:100vw; height:100vh;
-  z-index:895; /* sobre el contenido de las secciones, debajo de banderines/navbar/lightbox */
-  pointer-events:none;
-}
