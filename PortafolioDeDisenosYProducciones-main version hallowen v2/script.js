@@ -439,16 +439,12 @@ function applyPagination() {
   }
 }
 
-function loadMoreProjects() {
-  visibleCount = portfolioProjects.length;
-  applyPagination();
-}
-
 // ---- BOTÓN "CARGAR MÁS" ----
 function loadMoreProjects() {
   visibleCount += PAGE_SIZE;
   applyPagination();
 }
+
 
 // Inicializar el renderizado del portafolio
 renderPortfolio();
@@ -495,10 +491,11 @@ if (!isTouchDevice && cursor && ring) {
     if (target) {
       cursor.style.width = '24px';
       cursor.style.height = '24px';
-      cursor.style.backgroundColor = 'rgba(232, 23, 93, 0.3)';
-      ring.style.width = '48px';
-      ring.style.height = '48px';
-      ring.style.borderColor = 'rgba(255, 107, 53, 0.8)';
+      cursor.style.backgroundColor = 'rgba(255, 107, 53, 0.4)';
+      ring.style.width = '50px';
+      ring.style.height = '50px';
+      ring.style.borderColor = '#ff7a1a';
+      ring.style.boxShadow = '0 0 16px rgba(123, 47, 247, 0.8), 0 0 8px rgba(255, 122, 26, 0.6)';
     }
   });
 
@@ -512,6 +509,7 @@ if (!isTouchDevice && cursor && ring) {
       ring.style.width = '36px';
       ring.style.height = '36px';
       ring.style.borderColor = 'rgba(232, 23, 93, 0.5)';
+      ring.style.boxShadow = 'none';
     }
   });
 }
@@ -766,61 +764,103 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLightbox();
 });
 
-// ---- CARRUSEL INFINITO REUTILIZABLE (ARRASTRE + AUTO-SCROLL) ----
-// Misma mecánica de siempre (loop infinito + drag + auto-scroll), ahora
-// como función reutilizable: la usa la sección de "Promos" de arriba y,
-// cuando hay 2+ ejemplos, también la sección de temporada (Halloween, etc).
-function initInfiniteCarousel(wrapEl, trackEl, speed) {
+// ---- CARRUSEL INFINITO UNIVERSAL (PC Y MÓVIL) ----
+// Resuelve el tope de scroll en pantallas de escritorio anchas (1080p, 1440p, 4K),
+// garantiza loop infinito real, fluido (60/120 FPS), soporte de drag, touch y pausa al hover.
+function initInfiniteCarousel(wrapEl, trackEl, speedOrOptions) {
   if (!wrapEl || !trackEl) return;
 
-  // Duplicar contenido para loop infinito
-  trackEl.innerHTML += trackEl.innerHTML;
+  const speed = typeof speedOrOptions === 'number' ? speedOrOptions : (speedOrOptions && speedOrOptions.speed ? speedOrOptions.speed : 1.35);
+  const onItemClick = typeof speedOrOptions === 'object' && speedOrOptions.onItemClick ? speedOrOptions.onItemClick : null;
+
+  const originalChildren = Array.from(trackEl.children);
+  if (originalChildren.length === 0) return;
+  const originalCount = originalChildren.length;
+
+  // Multiplicar sets para asegurar que en cualquier pantalla de escritorio el carrusel
+  // tenga suficiente recorrido y jamás se detenga en el límite derecho.
+  const minTargetWidth = Math.max(window.innerWidth * 3.5, 4600);
+  let totalSets = 1;
+
+  while ((trackEl.scrollWidth < minTargetWidth || totalSets < 4) && totalSets < 8) {
+    originalChildren.forEach(child => {
+      trackEl.appendChild(child.cloneNode(true));
+    });
+    totalSets++;
+  }
 
   let isDown = false;
-  let startX;
-  let scrollLeftStart;
-  let autoScrollActive = true;
-  const autoScrollSpeed = speed || 1.55; // píxeles por frame
-  let resumeTimer = null;
+  let isHovered = false;
+  let startX = 0;
+  let scrollLeftStart = 0;
   let moved = false;
+  let autoScrollActive = true;
+  let resumeTimer = null;
   let currentScroll = 0;
+  let baseCycleWidth = 0;
 
-  // Inicializar posición de inicio en la mitad del track (evita topes iniciales)
+  function measureCycleWidth() {
+    if (trackEl.children.length > originalCount && trackEl.children[originalCount]) {
+      baseCycleWidth = trackEl.children[originalCount].offsetLeft - trackEl.children[0].offsetLeft;
+    }
+    if (!baseCycleWidth || baseCycleWidth <= 0) {
+      baseCycleWidth = trackEl.scrollWidth / totalSets;
+    }
+  }
+
+  // Inicializar en una posición segura (set 1)
   setTimeout(() => {
-    const halfWidth = trackEl.scrollWidth / 2;
-    wrapEl.scrollLeft = halfWidth;
-    currentScroll = halfWidth;
-  }, 100);
+    measureCycleWidth();
+    if (baseCycleWidth > 0) {
+      wrapEl.scrollLeft = baseCycleWidth;
+      currentScroll = baseCycleWidth;
+    }
+  }, 80);
 
-  // Interceptar clics en las tarjetas (evitar clic al arrastrar)
-  const cards = trackEl.querySelectorAll('.promo-card');
-  cards.forEach((card) => {
+  // Interceptar clics en tarjetas
+  Array.from(trackEl.children).forEach((card, index) => {
     card.addEventListener('click', (e) => {
       if (moved) {
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
+        return;
       }
-    }, true); // Usar capturing phase
+      if (onItemClick) {
+        onItemClick(index % originalCount, card);
+      }
+    }, true);
   });
 
-  // Reajuste continuo (scroll wrapping) bidireccional y suave para infinito real
-  wrapEl.addEventListener('scroll', () => {
-    const halfWidth = trackEl.scrollWidth / 2;
-    if (halfWidth <= 0) return;
-    const current = wrapEl.scrollLeft;
-
-    // Rango seguro: [halfWidth / 2, halfWidth * 1.5]
-    if (current < halfWidth / 2) {
-      wrapEl.scrollLeft = current + halfWidth;
+  // Reajuste continuo (scroll wrapping sin saltos)
+  function handleWrap() {
+    if (baseCycleWidth <= 0) return;
+    if (wrapEl.scrollLeft >= baseCycleWidth * 2) {
+      wrapEl.scrollLeft -= baseCycleWidth;
       currentScroll = wrapEl.scrollLeft;
-    } else if (current > halfWidth * 1.5) {
-      wrapEl.scrollLeft = current - halfWidth;
+    } else if (wrapEl.scrollLeft < baseCycleWidth * 0.5) {
+      wrapEl.scrollLeft += baseCycleWidth;
       currentScroll = wrapEl.scrollLeft;
     }
-  }, { passive: true });
+  }
 
-  // Eventos de ratón para drag en escritorio
+  wrapEl.addEventListener('scroll', handleWrap, { passive: true });
+
+  // Pausar con el mouse encima en PC para permitir lectura y clic cómodos
+  wrapEl.addEventListener('mouseenter', () => {
+    isHovered = true;
+  });
+
+  wrapEl.addEventListener('mouseleave', () => {
+    isHovered = false;
+    if (isDown) {
+      isDown = false;
+      wrapEl.classList.remove('active');
+      resumeAutoScroll();
+    }
+  });
+
+  // Arrastre con ratón en PC
   wrapEl.addEventListener('mousedown', (e) => {
     isDown = true;
     moved = false;
@@ -831,7 +871,7 @@ function initInfiniteCarousel(wrapEl, trackEl, speed) {
     clearTimeout(resumeTimer);
   });
 
-  wrapEl.addEventListener('mouseleave', () => {
+  window.addEventListener('mouseup', () => {
     if (isDown) {
       isDown = false;
       wrapEl.classList.remove('active');
@@ -839,30 +879,26 @@ function initInfiniteCarousel(wrapEl, trackEl, speed) {
     }
   });
 
-  wrapEl.addEventListener('mouseup', () => {
-    isDown = false;
-    wrapEl.classList.remove('active');
-    resumeAutoScroll();
-  });
-
   wrapEl.addEventListener('mousemove', (e) => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - wrapEl.offsetLeft;
-    const walk = (x - startX) * 1.5; // velocidad del drag
+    const walk = (x - startX) * 1.5;
     if (Math.abs(walk) > 5) {
       moved = true;
     }
     wrapEl.scrollLeft = scrollLeftStart - walk;
+    currentScroll = wrapEl.scrollLeft;
   });
 
-  // Eventos touch para móviles
+  // Touch en dispositivos móviles
   wrapEl.addEventListener('touchstart', () => {
     autoScrollActive = false;
     clearTimeout(resumeTimer);
   }, { passive: true });
 
   wrapEl.addEventListener('touchend', () => {
+    currentScroll = wrapEl.scrollLeft;
     resumeAutoScroll();
   }, { passive: true });
 
@@ -870,24 +906,34 @@ function initInfiniteCarousel(wrapEl, trackEl, speed) {
     clearTimeout(resumeTimer);
     resumeTimer = setTimeout(() => {
       autoScrollActive = true;
-      currentScroll = wrapEl.scrollLeft; // Sincronizar posición actual al reanudar
-    }, 1500); // 1.5s antes de retomar el auto-scroll
+      currentScroll = wrapEl.scrollLeft;
+    }, 1400);
   }
 
-  // Bucle de animación por frames
-  function autoScrollStepGeneric() {
-    if (autoScrollActive && !isDown) {
-      currentScroll += autoScrollSpeed;
+  // Bucle de animación por frames (60/120 FPS)
+  function autoScrollStep() {
+    if (autoScrollActive && !isDown && !isHovered) {
+      currentScroll += speed;
+      if (baseCycleWidth > 0) {
+        if (currentScroll >= baseCycleWidth * 2) {
+          currentScroll -= baseCycleWidth;
+        } else if (currentScroll < baseCycleWidth * 0.5) {
+          currentScroll += baseCycleWidth;
+        }
+      }
       wrapEl.scrollLeft = currentScroll;
-      currentScroll = wrapEl.scrollLeft; // Re-leer para mantener sincronía
     }
-    requestAnimationFrame(autoScrollStepGeneric);
+    requestAnimationFrame(autoScrollStep);
   }
-  requestAnimationFrame(autoScrollStepGeneric);
+  requestAnimationFrame(autoScrollStep);
+
+  window.addEventListener('resize', () => {
+    measureCycleWidth();
+  }, { passive: true });
 }
 
-// ---- PROMO TRACK (arriba del todo) usando el carrusel reutilizable ----
-initInfiniteCarousel(document.querySelector('.promo-section'), document.getElementById('promo-track'), 1.55);
+// ---- PROMO TRACK (Banner superior de promociones) ----
+initInfiniteCarousel(document.querySelector('.promo-section'), document.getElementById('promo-track'), 1.4);
 
 // ---- CARRUSEL DE TESTIMONIOS (CAPTURAS) ----
 const testimonialsWrap = document.querySelector('.testimonials-carousel-wrap');
@@ -895,118 +941,15 @@ const testimonialsTrack = document.getElementById('testimonials-track');
 let testimonialShotSrcs = [];
 
 if (testimonialsWrap && testimonialsTrack) {
-  // Guardar los src originales (los 6 reales) antes de duplicar para el loop infinito
+  // Guardar los src originales antes de clonar para el lightbox
   testimonialShotSrcs = Array.from(testimonialsTrack.querySelectorAll('img')).map(img => img.getAttribute('src') || '');
-  testimonialsTrack.innerHTML += testimonialsTrack.innerHTML;
 
-  let isDown = false;
-  let startX;
-  let scrollLeftStart;
-  let autoScrollActive = true;
-  let autoScrollSpeed = 1.5; // píxeles por frame
-  let resumeTimer = null;
-  let moved = false;
-  let currentScroll = 0;
-
-  // Inicializar posición de inicio en la mitad del track (evita topes iniciales)
-  setTimeout(() => {
-    const halfWidth = testimonialsTrack.scrollWidth / 2;
-    testimonialsWrap.scrollLeft = halfWidth;
-    currentScroll = halfWidth;
-  }, 100);
-
-  // Registrar clics individuales (solo si no se arrastró)
-  testimonialsTrack.querySelectorAll('.testimonial-shot').forEach((shot, i) => {
-    shot.addEventListener('click', (e) => {
-      if (moved) {
-        e.preventDefault();
-        e.stopPropagation();
-      } else {
-        openTestimonialImage(i % testimonialShotSrcs.length);
-      }
-    });
-  });
-
-  // Reajuste continuo (scroll wrapping) bidireccional y suave para infinito real
-  testimonialsWrap.addEventListener('scroll', () => {
-    const halfWidth = testimonialsTrack.scrollWidth / 2;
-    if (halfWidth <= 0) return;
-    const current = testimonialsWrap.scrollLeft;
-    
-    // Rango seguro: [halfWidth / 2, halfWidth * 1.5]
-    if (current < halfWidth / 2) {
-      testimonialsWrap.scrollLeft = current + halfWidth;
-      currentScroll = testimonialsWrap.scrollLeft;
-    } else if (current > halfWidth * 1.5) {
-      testimonialsWrap.scrollLeft = current - halfWidth;
-      currentScroll = testimonialsWrap.scrollLeft;
-    }
-  }, { passive: true });
-
-  // Eventos de ratón para drag & drop en escritorio
-  testimonialsWrap.addEventListener('mousedown', (e) => {
-    isDown = true;
-    moved = false;
-    testimonialsWrap.classList.add('active');
-    startX = e.pageX - testimonialsWrap.offsetLeft;
-    scrollLeftStart = testimonialsWrap.scrollLeft;
-    autoScrollActive = false;
-    clearTimeout(resumeTimer);
-  });
-
-  testimonialsWrap.addEventListener('mouseleave', () => {
-    if (isDown) {
-      isDown = false;
-      testimonialsWrap.classList.remove('active');
-      resumeAutoScroll();
+  initInfiniteCarousel(testimonialsWrap, testimonialsTrack, {
+    speed: 1.3,
+    onItemClick: (originalIndex) => {
+      openTestimonialImage(originalIndex);
     }
   });
-
-  testimonialsWrap.addEventListener('mouseup', () => {
-    isDown = false;
-    testimonialsWrap.classList.remove('active');
-    resumeAutoScroll();
-  });
-
-  testimonialsWrap.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - testimonialsWrap.offsetLeft;
-    const walk = (x - startX) * 1.5; // velocidad del drag
-    if (Math.abs(walk) > 5) {
-      moved = true;
-    }
-    testimonialsWrap.scrollLeft = scrollLeftStart - walk;
-  });
-
-  // Eventos touch (móviles) para pausar y reanudar el auto-scroll
-  testimonialsWrap.addEventListener('touchstart', () => {
-    autoScrollActive = false;
-    clearTimeout(resumeTimer);
-  }, { passive: true });
-
-  testimonialsWrap.addEventListener('touchend', () => {
-    resumeAutoScroll();
-  }, { passive: true });
-
-  function resumeAutoScroll() {
-    clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(() => {
-      autoScrollActive = true;
-      currentScroll = testimonialsWrap.scrollLeft; // Sincronizar posición actual al reanudar
-    }, 1500); // 1.5s antes de retomar el auto-scroll
-  }
-
-  // Bucle de animación por frames
-  function autoScrollStep() {
-    if (autoScrollActive && !isDown) {
-      currentScroll += autoScrollSpeed;
-      testimonialsWrap.scrollLeft = currentScroll;
-      currentScroll = testimonialsWrap.scrollLeft; // Re-leer para mantener sincronía
-    }
-    requestAnimationFrame(autoScrollStep);
-  }
-  requestAnimationFrame(autoScrollStep);
 }
 
 // ---- ABRIR CAPTURA DE TESTIMONIO EN GRANDE (LIGHTBOX) ----

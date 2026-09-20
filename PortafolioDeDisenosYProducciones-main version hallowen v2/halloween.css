@@ -75,32 +75,174 @@
   .halloween-ribbon{height:24px; font-size:10.5px; letter-spacing:.3px}
 }
 
-/* ---- Niebla sutil en el hero: 100% CSS (gradientes + transform), sin  ----
-   ---- imágenes ni canvas, así que casi no pesa para la carga.         ---- */
-.hero::before,
-.hero::after{
+/* ---- NIEBLA PROCEDURAL TENEBROSA (CANVAS + BRUMA DE SUELO) ---- */
+.hero-fog-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+  mix-blend-mode:screen;
+  opacity:0.92;
+}
+
+/* Bruma de suelo que une el hero con la siguiente sección */
+.hero-ground-mist{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:160px;
+  pointer-events:none;
+  z-index:1;
+  background:
+    radial-gradient(ellipse 110% 90% at 50% 100%, rgba(26,7,38,0.85) 0%, rgba(123,47,247,0.18) 45%, transparent 80%),
+    linear-gradient(to top, rgba(10,10,10,0.95), transparent);
+  animation:respiracionBruma 12s ease-in-out infinite alternate;
+}
+
+@keyframes respiracionBruma{
+  0%{opacity:0.8;transform:scaleY(0.95)}
+  100%{opacity:1;transform:scaleY(1.08)}
+}
+
+/* Niebla espectral sutil bajo el navbar */
+#navbar::after{
   content:'';
   position:absolute;
-  inset:-15% -25%;
-  z-index:0;
+  bottom:-14px;
+  left:0;
+  width:100%;
+  height:16px;
   pointer-events:none;
+  background:radial-gradient(ellipse 70% 100% at 50% 0%, rgba(123,47,247,0.32), rgba(255,107,53,0.18) 50%, transparent 100%);
+  filter:blur(6px);
+  z-index:-1;
+}
+
+/* ---- COLORES E INTERACCIÓN DE HALLOWEEN (BOTONES, CARDS, HOVERS) ---- */
+/* Badge del Hero en Halloween */
+.hero-tag{
+  background:rgba(255,107,53,0.14) !important;
+  border-color:rgba(255,107,53,0.42) !important;
+  color:#ff9d42 !important;
+  box-shadow:0 0 20px rgba(255,107,53,0.2), inset 0 0 10px rgba(255,107,53,0.08) !important;
+}
+
+/* Título con acento de fuego de calabaza y púrpura brujería */
+.hero-title .accent{
+  background:linear-gradient(135deg, #ff6a00 15%, #ff2e2e 55%, #a855f7 100%) !important;
+  -webkit-background-clip:text !important;
+  -webkit-text-fill-color:transparent !important;
+  background-clip:text !important;
+  filter:drop-shadow(0 0 24px rgba(255,106,0,0.35));
+}
+
+/* Botones con fuego fatuo y aura mística */
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 36px rgba(255,107,53,0.5), 0 0 24px rgba(123,47,247,0.4) !important;
+}
+.btn-secondary:hover{
+  border-color:rgba(255,122,26,0.5) !important;
+  box-shadow:0 0 20px rgba(255,122,26,0.25) !important;
+}
+
+/* Filtros de Categoría con resplandor espectral */
+.cat-btn:hover{
+  border-color:#ff7a1a !important;
+  color:#ff7a1a !important;
+  box-shadow:0 0 15px rgba(255,122,26,0.35) !important;
+}
+.cat-btn.active{
+  background:linear-gradient(135deg,#ff6a00,#8418ff) !important;
+  border-color:transparent !important;
+  color:white !important;
+  box-shadow:0 4px 22px rgba(255,106,0,0.5), 0 0 15px rgba(132,24,255,0.35) !important;
+}
+
+/* Tarjetas interactivas con bordes de calabaza y púpura brujería */
+.service-card:hover{
+  border-color:rgba(255,107,53,0.45) !important;
+  box-shadow:0 16px 40px rgba(0,0,0,0.6), 0 0 24px rgba(255,107,53,0.25) !important;
+}
+.feature-box:hover{
+  border-color:rgba(123,47,247,0.5) !important;
+  box-shadow:0 16px 40px rgba(0,0,0,0.6), 0 0 24px rgba(123,47,247,0.25) !important;
+}
+.project-card:hover{
+  border-color:rgba(255,107,53,0.45) !important;
+  box-shadow:0 20px 50px rgba(0,0,0,0.6), 0 0 25px rgba(255,107,53,0.22) !important;
+}
+.promo-card:hover{
+  box-shadow:0 12px 40px rgba(255,107,53,0.4), 0 0 20px rgba(123,47,247,0.3) !important;
+  border-color:rgba(255,122,26,0.5) !important;
+}
+.testimonial-shot:hover{
+  border-color:rgba(123,47,247,0.5) !important;
+  box-shadow:0 16px 40px rgba(123,47,247,0.35) !important;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-ground-mist{animation:none}
+}
+
+
+.halloween-countdown{
+  max-width:900px;margin:80px auto 0;padding:48px 32px;
+  text-align:center;position:relative;
   background:
-    radial-gradient(ellipse 45% 35% at 25% 65%, rgba(123,47,247,0.16), transparent 70%),
-    radial-gradient(ellipse 40% 30% at 75% 30%, rgba(255,122,26,0.12), transparent 70%);
-  animation: nieblaFlota 28s ease-in-out infinite alternate;
-  will-change: transform;
+    radial-gradient(ellipse at 50% 0%, rgba(123,47,247,0.14), transparent 60%),
+    linear-gradient(180deg, rgba(20,6,10,0.55), rgba(10,8,14,0.25));
+  border:1px solid rgba(255,50,50,0.18);
+  border-radius:24px;
 }
-.hero::after{
-  background: radial-gradient(ellipse 50% 32% at 55% 80%, rgba(10,8,14,0.4), transparent 70%);
-  animation-duration: 36s;
-  animation-delay: -10s;
-  opacity:.8;
+.countdown-warning{
+  font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:#ff5050;margin-bottom:14px;
+  animation:parpadeoSiniestro 2.6s infinite;
 }
-@keyframes nieblaFlota{
-  0%{transform:translate(-3%,0)}
-  50%{transform:translate(2%,-2%)}
-  100%{transform:translate(-1%,2%)}
+.countdown-title{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(24px,4.5vw,38px);
+  margin-bottom:36px;color:#f5f0f0;
+  text-shadow:0 0 8px rgba(255,30,30,.55),0 0 22px rgba(123,47,247,.35);
+}
+.countdown-grid{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.countdown-unit{display:flex;flex-direction:column;align-items:center;min-width:76px}
+.countdown-num{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(32px,7vw,54px);line-height:1;
+  background:linear-gradient(180deg,#ff2e2e,#7b2ff7);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-shadow:0 0 18px rgba(255,40,40,.35);
+  animation:latidoSiniestro 1.8s ease-in-out infinite;
+  display:inline-block;
+}
+.countdown-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gris-claro);margin-top:6px}
+.countdown-sep{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(24px,5vw,40px);color:#ff2e2e;
+  transform:translateY(-6px);opacity:.7;
+}
+@keyframes parpadeoSiniestro{
+  0%,44%,100%{opacity:1}
+  46%{opacity:.15}
+  48%{opacity:1}
+  50%{opacity:.3}
+  52%{opacity:1}
+}
+@keyframes latidoSiniestro{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.045)}
 }
 @media (prefers-reduced-motion: reduce){
-  .hero::before,.hero::after{animation:none}
+  .countdown-warning,.countdown-num{animation:none}
+}
+@media (max-width:600px){
+  .halloween-countdown{padding:36px 20px;margin-top:56px}
+  .countdown-grid{gap:8px}
+  .countdown-unit{min-width:60px}
 }

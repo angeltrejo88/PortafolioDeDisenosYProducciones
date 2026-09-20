@@ -35,13 +35,19 @@
 <link href="halloween.css" rel="stylesheet">
 <!-- EDITAR: FIN HALLOWEEN (CSS) -->
 
-<!-- Google Analytics (GA4) — reemplaza G-XXXXXXXXXX con tu ID real de Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google Analytics (GA4) — reemplaza G-XXXXXXXXXX con tu ID real de Google Analytics cuando lo tengas -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  const GA_ID = 'G-XXXXXXXXXX'; // Reemplazar con ID real si se utiliza
+  if (GA_ID && GA_ID !== 'G-XXXXXXXXXX') {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
 </script>
 
 </head>
@@ -97,6 +103,12 @@
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
+
+  <!-- EDITAR: INICIO NIEBLA HALLOWEEN (borrar junto al módulo halloween) -->
+  <canvas id="halloweenFogCanvas" class="hero-fog-canvas" aria-hidden="true"></canvas>
+  <div class="hero-ground-mist" aria-hidden="true"></div>
+  <!-- EDITAR: FIN NIEBLA HALLOWEEN -->
+
 <br>
   <div class="hero-tag">✨ Especialistas en Invitaciones Web y en video</div>
 
@@ -141,19 +153,19 @@
     <!-- se duplica por JS para loop infinito -->
     <div class="promo-card" onclick="openLightbox('promo1')">
       <!-- EDITAR: PROMO VISUALIZER — pega aquí el link de tu nueva imagen cuando la subas -->
-      <img src="https://i.ibb.co/PsRMkfLv/Whats-App-Image-2026-08-25-at-4-06-38-PM.png" alt="Paquete 7 Visualizers + caratula" fetchpriority="high" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
+      <img src="https://i.ibb.co/PsRMkfLv/Whats-App-Image-2026-08-25-at-4-06-38-PM.png" alt="Paquete 7 Visualizers + caratula" fetchpriority="high" decoding="async" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
 
 
       <div class="promo-overlay"><span class="promo-label">🎵 7 VISUALIZER + 1 CARÁTULA PARA TU DISCO POR $300</span></div>
     </div>
     <div class="promo-card" onclick="openLightbox('promo2')">
-      <img src="https://i.ibb.co/DfxpW2FH/Chat-GPT-Image-2-jun-2026-10-04-36-p-m.png" alt="Invitaciones Digitales" fetchpriority="high" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
+      <img src="https://i.ibb.co/DfxpW2FH/Chat-GPT-Image-2-jun-2026-10-04-36-p-m.png" alt="Invitaciones Digitales" loading="lazy" decoding="async" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
 
       <div class="promo-overlay"><span class="promo-label">🎉 INVITACIONES DIGITALES DESDE $249</span></div>
     </div>
 
     <div class="promo-card" onclick="openLightbox('promo3')">
-      <img src="https://i.ibb.co/NgJqp5DW/Chat-GPT-Image-5-may-2026-08-29-55-p-m.png" alt="Flayers" fetchpriority="high" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
+      <img src="https://i.ibb.co/NgJqp5DW/Chat-GPT-Image-5-may-2026-08-29-55-p-m.png" alt="Flayers" loading="lazy" decoding="async" onerror="this.closest('.promo-card').style.background='linear-gradient(135deg,#e8175d22,#ff6b3522)';this.remove()">
 
 
       <div class="promo-overlay"><span class="promo-label">✨ Flayers Personalizados a tan solo $99</span></div>
@@ -226,6 +238,9 @@
   </section>
 </div>
 
+<!-- EDITAR: INICIO CONTADOR HALLOWEEN (borrar al quitar el módulo) -->
+<div id="halloween-countdown-section"></div>
+<!-- EDITAR: FIN CONTADOR HALLOWEEN -->
 
 <!-- ============ SECCIÓN DE TEMPORADA (ver CONFIG en script.js: TEMPORADA_CONFIG) ============ -->
 <div id="temporada-section"></div>
@@ -324,25 +339,25 @@
   <div class="testimonials-carousel-wrap reveal">
     <div class="testimonials-track" id="testimonials-track">
       <div class="testimonial-shot">
-        <img src="reco 1.png" alt="Captura de reseña de cliente 1" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+        <img src="reco 1.png" alt="Captura de reseña de cliente 1" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=IMG_FALLBACK">
       </div>
       <div class="testimonial-shot">
-        <img src="reco 2.png" alt="Captura de reseña de cliente 2" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+        <img src="reco 2.png" alt="Captura de reseña de cliente 2" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=IMG_FALLBACK">
       </div>
       <div class="testimonial-shot">
-        <img src="reco 3.png" alt="Captura de reseña de cliente 3" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+        <img src="reco 3.png" alt="Captura de reseña de cliente 3" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=IMG_FALLBACK">
       </div>
       <div class="testimonial-shot">
-        <img src="reco 4.png" alt="Captura de reseña de cliente 4" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+        <img src="reco 4.png" alt="Captura de reseña de cliente 4" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=IMG_FALLBACK">
       </div>
       <div class="testimonial-shot">
-        <img src="reco 5.png" alt="Captura de reseña de cliente 5" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+        <img src="reco 5.png" alt="Captura de reseña de cliente 5" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=IMG_FALLBACK">
       </div>
       <div class="testimonial-shot">
-        <img src="reco 6.png" alt="Captura de reseña de cliente 6" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+        <img src="reco 6.png" alt="Captura de reseña de cliente 6" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=IMG_FALLBACK">
       </div>
       <div class="testimonial-shot">
-        <img src="reco 7.png" alt="Captura de reseña de cliente 6" loading="lazy" onerror="this.onerror=null;this.src=IMG_FALLBACK">
+        <img src="reco 7.png" alt="Captura de reseña de cliente 7" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=IMG_FALLBACK">
       </div>
     </div>
   </div>
