@@ -25,13 +25,37 @@ const TEMPORADA_ITEMS = [
     emoji: '🎃',
     etiqueta: 'Edición especial de temporada',
     // USAMOS COMILLAS INVERTIDAS Y RECOMODAMOS EL TEXTO CON ENTER:
-    titulo: `💀 Invitación Interactiva 
-    de <br> Hall🎃ween 🕷🕸`,
+    titulo: `💀 Halloween Night 🎃 🕷🕸`,
     descripcion: 'Una invitación web con animaciones y ambientación 100% tenebrosa para tu fiesta de Halloween.',
     // EDITAR: TEMPORADA — pega aquí el link de tu imagen cuando la subas
     imagen: 'https://i.ibb.co/QvRX1W3V/Whats-App-Image-2026-08-25-at-6-07-24-PM.jpg',
     // EDITAR: TEMPORADA — pega aquí el link de la demo o del chat de WhatsApp
     link: 'https://invitacion-hallowen.vercel.app/',
+    textoBoton: 'Ver invitación de Halloween'
+  },
+
+  {
+    emoji: '🎃',
+    etiqueta: 'Edición especial de temporada',
+    // USAMOS COMILLAS INVERTIDAS Y RECOMODAMOS EL TEXTO CON ENTER:
+    titulo: `💀 Sesion del mas alla 🎃 🕷🕸`,
+    descripcion: 'Una invitación web con animaciones y ambientación 100% tenebrosa para tu fiesta de Halloween.',
+    // EDITAR: TEMPORADA — pega aquí el link de tu imagen cuando la subas
+    imagen: 'https://i.ibb.co/X6VY6HP/Whats-App-Image-2026-10-06-at-9-27-48-PM.jpg',
+    // EDITAR: TEMPORADA — pega aquí el link de la demo o del chat de WhatsApp
+    link: 'https://invitacion-halloween-invitacion-oui.vercel.app/',
+    textoBoton: 'Ver invitación de Halloween'
+  },
+  {
+    emoji: '🎃',
+    etiqueta: 'Edición especial de temporada',
+    // USAMOS COMILLAS INVERTIDAS Y RECOMODAMOS EL TEXTO CON ENTER:
+    titulo: `💀 Pocion del aquelarre 🎃 🕷🕸`,
+    descripcion: 'Una invitación web con animaciones y ambientación 100% tenebrosa para tu fiesta de Halloween.',
+    // EDITAR: TEMPORADA — pega aquí el link de tu imagen cuando la subas
+    imagen: 'https://i.ibb.co/G39rgdM3/Whats-App-Image-2026-10-06-at-11-40-54-PM.jpg',
+    // EDITAR: TEMPORADA — pega aquí el link de la demo o del chat de WhatsApp
+    link: 'https://invitacion-halloween-caldero.vercel.app/',
     textoBoton: 'Ver invitación de Halloween'
   }
   // EDITAR: TEMPORADA — cuando tengas listos tus otros 2 ejemplos, copia el
